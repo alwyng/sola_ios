@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	    <meta name="mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>Solareff</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	    <link rel="stylesheet" href="../css/framework7.ios.css">
+	    <link rel="stylesheet" href="../css/framework7.ios.colors.css">
+	    <link rel="stylesheet" href="../css/kitchen-sink.css">
+	    <link rel="icon" href="../res/icon/img/logo.png">
+	    <link rel="apple-touch-icon" href="../res/icon/img/logo.png">
+		<script src="../js/recalc.js"></script>
+		<script src="../js/adder.js"></script>
+	</head>
+	<body onload="load()">
+
+	    <div class="statusbar-overlay">
+	    </div>
+	    <div class="views">
+	      <div class="view view-main">
+	        <div class="navbar">
+	          <div class="navbar-inner">
+			    <div class="left sliding"><a href="main.html" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+	            <div class="center sliding">
+	            	Add Appliance	            	
+	            </div>
+	            <div class="right sliding">
+	   				<form class="center" name="frmKwh" action="">
+						<input size="9" class="kwhstyle" type="text" name="txtKwh" disabled>
+					</form>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="pages navbar-through toolbar-through">
+          		<div class="page">
+            		<div class="page-content">
+            			<div class="app">
+						<a href="http://www.solareff.co.za">
+							<img style='width:100%;height:100%;object-fit: contain;' src="../img/logo.jpg">
+
+						</a>  
+						<br>
+						<br>
+						<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%;; padding-right:25%;">
+							<div style="padding-left:2%;font-size: 1.5em;" class="button button-fill">
+								<script> 
+									document.write(localStorage.CurrentApp);
+								</script>
+							</div>
+						</div>
+						<!--<a href="main.html">
+							<input type="button" name="btnBack" value="Back">
+						</a>
+						<br><br>-->
+						<table id="tblApp" style="padding-left:2%;font-size: 1.5em;">
+							<tr style="background-color:white">
+								<script>
+									if (localStorage.getItem(localStorage.CurrentApp.replace(/ /g,''))==null) {
+										var arrApps = localStorage.getItem('arr'+localStorage.CurrentApp.replace(/ /g,'')+'App').split(',');
+										var intDfltApps = localStorage.getItem('int'+localStorage.CurrentApp.replace(/ /g,'')+'Default').split(',');
+										
+										for (var i=0;i<intDfltApps;i++) {
+											var table = document.getElementById("tblApp");
+											var row = table.insertRow(table.rows.length);
+											var cell1 = row.insertCell(0);
+											cell1.innerHTML = "<div style='width:200px;'>"+arrApps[i]+"</div>";
+											//add the capture boxes
+											var hrs = document.createElement('input');
+											hrs.setAttribute('type', 'text');
+											hrs.setAttribute('placeholder', 'Hours per Day');
+											hrs.setAttribute('id','defaulthrs');
+											hrs.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
+											hrs.addEventListener('change',persistTable);
+											var cell2 = row.insertCell(1);
+											cell2.appendChild(hrs);
+											var nbr = document.createElement('input');
+											nbr.setAttribute('type', 'text');
+											nbr.setAttribute('placeholder', 'Quantity');
+											nbr.setAttribute('id','defaultnbr');
+											nbr.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
+											nbr.addEventListener('change',persistTable);
+											var cell3 = row.insertCell(2);
+											cell3.appendChild(nbr);
+										}
+									}
+								</script>
+							</tr>
+						</table>
+						<br>
+
+						<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%;; padding-right:25%;">
+						<div>Choose your appliance</div>
+							<script>
+								var arrApps = localStorage.arrApplianceList.split(',');
+								//var intDfltApps = localStorage.getItem('int'+localStorage.CurrentApp.replace(/ /g,'')+'Default').split(',');
+								var intSelectSize = arrApps.length;
+								
+								document.write('<select id="lstAppPicker" size="'+intSelectSize+'">');//'+arrApps.length-intDfltApps+'">');
+								for (var i=0;i<arrApps.length;i++) {
+									document.write('<option>'+arrApps[i]+'</option>');
+								}
+								document.write('</select>');
+							</script>
+						</div>
+						<br>
+				
+						<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%;; padding-right:25%;">
+							<input type="button" class="button button-fill" name="btnAdd" value="Add appliance" onclick="AddApp()">
+						</div>
+
+						<br>
+						<!--<br>
+						<br>
+						<br>
+						<input type="button" name="btnHelp" value="Help">
+						<br>
+						<div id="debug"/>
+						</div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="toolbar">
+				<div class="toolbar-inner">
+					<a href="contact_us.html" class="link">Contact Us
+					</a>
+					<a href="faq.html" class="link">FAQ
+					</a>
+				</div>
+			</div>
+	       </div>
+	      </div>
+	</body>
+</html>

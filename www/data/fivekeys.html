@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	    <meta name="mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>Solareff</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	    <link rel="stylesheet" href="../css/framework7.ios.css">
+	    <link rel="stylesheet" href="../css/framework7.ios.colors.css">
+	    <link rel="stylesheet" href="../css/kitchen-sink.css">
+	    <link rel="icon" href="../res/icon/img/logo.png">
+	    <link rel="apple-touch-icon" href="../res/icon/img/logo.png">
+		<script src="../js/fivekeys.js"></script>
+		<script src="../js/recalc.js"></script>
+	</head>
+	<body onload="load()"> 
+	    <div class="statusbar-overlay">    	
+	    </div>
+	    <div class="views">
+	      <div class="view view-main">
+	        <div class="navbar">
+	          <div class="navbar-inner">
+	        	<div class="left sliding"><a href="javascript:history.back()" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>	            	
+	            <div class="center sliding">
+	            	Key Energy Questions
+	            </div>
+	            <div class="right sliding">
+	   				<form class="center" name="frmKwh" action="">
+						<input size="9" class="kwhstyle" type="text" name="txtKwh" disabled>
+					</form>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="pages navbar-through toolbar-through"> 
+          		<div class="page">
+            		<div class="page-content">
+						<div class="app">
+							<a href="http://www.solareff.co.za">
+								<img style='width:100%;height:100%;object-fit: contain;' src="../img/logo.jpg">
+							</a>    
+							<br>
+							<br>
+							<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%;; padding-right:10%;">
+								<div style="font-size: 1.5em;" class="button button-fill">
+									Does your house have a...
+								</div>
+							</div>         			
+						    <div class="content-block-title">
+						    	<span style="float:left;width:150px">Solar Geyser</span>
+								<input type="text" style="width:25%; box-sizing: border-box;" placeholder="Size" id="txtSizeSolGeyser" onChange="persist()">
+								<input type="text" style="width:25%; box-sizing: border-box;" placeholder="Quantity" id="txtQtySolGeyser" onChange="persist()">
+							</div>							
+							<div class="content-block-title">
+						    	<span style="float:left;width:150px">Electric Geyser</span>																
+								<input type="text" style="width:25%; box-sizing: border-box" placeholder="Size" id="txtSizeElecGeyser" onChange="persist()">
+								<input type="text" style="width:25%; box-sizing: border-box" placeholder="Quantity" id="txtQtyElecGeyser" onChange="persist()">
+							</div>
+							<div class="content-block-title">
+						    	<span style="float:left;width:150px">Gas Geyser</span>																								
+								<input type="text" style="width:25%; box-sizing: border-box" placeholder="Size" id="txtSizeGasGeyser" onChange="persist()">
+								<input type="text" style="width:25%; box-sizing: border-box" placeholder="Quantity" id="txtQtyGasGeyser" onChange="persist()">
+							</div>
+							<div class="content-block-title">
+						    	<span style="float:left;width:150px">Heatpump</span>																																
+								<select size="2" id="selIsHeatPump" onChange="persist()"><option>Yes</option><option>No</option></select>
+							</div>
+							<div class="content-block-title">
+						    	<span style="float:left;width:150px;white-space:pre-wrap">Solar blanket around Geyser</span>																																
+								<select size="2" id="selIsBlanket" onChange="persist()"><option>Yes</option><option>No</option></select>
+							</div>
+							<div class="content-block-title">
+						    	<span style="float:left;width:150px">Stove</span>																																							
+								<select size="2" id="selStoveType" onChange="persist()"><option>Gas</option><option>Electric</option></select>
+							</div>
+							<div class="content-block-title">
+						    	<span style="float:left;width:150px">Oven</span>																																
+								<select size="2" id="selOvenType" onChange="persist()"><option>Gas</option><option>Electric</option></select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="toolbar">
+				<div class="toolbar-inner">
+					<a href="contact_us.html" class="link">Contact Us
+					</a>
+					<a href="faq.html" class="link">FAQ
+					</a>
+				</div>
+			</div>
+			
+	       </div>
+	      </div>	          	    
+    <script type="text/javascript" src="../js/framework7.js"></script>
+    <script type="text/javascript" src="../js/kitchen-sink.js"></script>
+	</body>
+</html>
