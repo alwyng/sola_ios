@@ -70,6 +70,7 @@
 						<a href="http://www.solareff.co.za">
 							<img style='width:100%;height:100%;object-fit: contain;' src="img/logo.jpg">
 						</a>
+						<input type="button" onclick="writeInfo()" value="Test file">
 						<br>
 						<script>
 							if (!localStorage["isSubmit"]) {
@@ -100,7 +101,9 @@
 							{
 								document.write('<input type="button" class="button button-fill" onclick="capturePhoto()" value="Submit...">');
 								document.write('<br>');
-								document.write('<input type="button" class="button button-fill" onclick="resetIndex()" value="Back">');
+								document.write('<a href="data/main.html">\
+													<input type="button" class="button button-fill" onclick="resetIndex()" value="Back">\
+												</a>');
 							}
 						</script>
 				    </div>
@@ -398,6 +401,21 @@
 			{
 				localStorage.isSubmit = 0;
 				location.reload();
+			}
+
+			function writeInfo()
+			{
+				window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (fs) {
+
+					console.log('file system open: ' + fs.name);
+					createFile(fs.root, "newTempFile.txt", false);
+
+				}, onErrorLoadFs);
+			}
+			
+			function onErrorLoadFs()
+			{
+				alert('FAIL');
 			}
         </script>
     </body>
