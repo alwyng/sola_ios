@@ -403,20 +403,23 @@
 				location.reload();
 			}
 
-			
-				window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (writeInfo) {
-
-					alert('start');
-					console.log('file system open: ' + fs.name);
-					createFile(fs.root, "newTempFile.txt", false);
-					alert('mid');
-
-				}, onErrorLoadFs);
-			
-			function onErrorLoadFs()
+			function writeFile()
 			{
-				alert('FAIL');
-			}
+			    var type = window.TEMPORARY;
+			    var size = 5*1024*1024;
+
+			    window.requestFileSystem(type, size, successCallback, errorCallback)
+
+			    function successCallback(fs) {
+				  fs.root.getFile('log.txt', {create: true, exclusive: true}, function(fileEntry) {
+					 alert('File creation successfull!')
+				  }, errorCallback);
+			    }
+
+			    function errorCallback(error) {
+				  alert("ERROR: " + error.code)
+			    }
+			}			
         </script>
     </body>
 </html>
