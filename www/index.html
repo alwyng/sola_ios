@@ -403,18 +403,15 @@
 				location.reload();
 			}
 
-			function writeInfo()
-			{
-				alert('start');
-				window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (fs) {
+			
+				window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (writeInfo) {
 
+					alert('start');
 					console.log('file system open: ' + fs.name);
 					createFile(fs.root, "newTempFile.txt", false);
 					alert('mid');
 
 				}, onErrorLoadFs);
-				alert('stop');
-			}
 			
 			function onErrorLoadFs()
 			{
