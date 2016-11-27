@@ -408,17 +408,21 @@
 			    var type = window.TEMPORARY;
 			    var size = 5*1024*1024;
 				alert('test');
-			    window.requestFileSystem(type, size, successCallback, errorCallback)
+				try {
+					window.requestFileSystem(type, size, successCallback, errorCallback);
+				} catch(err) {
+					alert(err.message);
+				}
+			}	
 
-			    function successCallback(fs) {
-				  fs.root.getFile('log.txt', {create: true, exclusive: true}, function(fileEntry) {
-					 alert('File creation successfull!')
-				  }, errorCallback);
-			    }
+			function successCallback(fs) {
+			  fs.root.getFile('log.txt', {create: true, exclusive: true}, function(fileEntry) {
+				 alert('File creation successfull!')
+			  }, errorCallback);
+			}
 
-			    function errorCallback(error) {
-				  alert("ERROR: " + error.code)
-			    }
+			function errorCallback(error) {
+			  alert("ERROR: " + error.code)
 			}			
         </script>
     </body>
