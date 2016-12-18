@@ -377,7 +377,7 @@
 			
 			function onPhotoDataSuccess(imageData) 
 			{
-					
+				var b64 = window.btoa("a,b,c\n1,4,7\n2,3,4");
 				  
 				  setTimeout(function() {
 					try {
@@ -387,9 +387,9 @@
 							cc:      [],
 							bcc:     [],
 							subject: 'Solareff App Result',
-							body:    'test'//,
+							body:    'test',
 							//attachments: 'base64:bill.jpg//'+imageData
-							//attachments: 'base64:bill.csv//a,b,c\n1,4,7\n2,3,4'
+							attachments: 'base64:bill.csv//'+b64
 						});
 						
 					}
