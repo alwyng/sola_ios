@@ -72,7 +72,7 @@
 						</a>
 						<input type="button" onclick="writeInfo()" value="Test file">
 						<br>
-						<input type="button" onclick="disp()" value="Display file">
+						<input type="button" onclick="buildCsvFiles()" value="Test CSV">
 						<br>
 						<script>
 							if (!localStorage["isSubmit"]) {
@@ -375,9 +375,64 @@
 				
 			}
 			
+			var ClientDetail='';
+			var KeyQuestions='';
+			var RoomUsage='';
+			
+			function buildCsvFiles()
+			{
+				var arrRoomList = localStorage.roomList.split(';');
+						
+				//handle email body user details
+				var strEmailBody = 'Name: '+localStorage.userName+' \n';
+				strEmailBody += 'Surname: '+localStorage.userSurname+' \n';
+				strEmailBody += 'Email: '+localStorage.userEmail+' \n';
+			
+				//Key questions
+				var strKeyQuestions = 'Solar Geyser Size: '+localStorage.sizeSolGeyser+'\r\n';				
+				strKeyQuestions += 'Solar Geyser Quantity: '+localStorage.QtySolGeyser+'\r\n';					
+				strKeyQuestions += 'Electric Geyser Size: '+localStorage.SizeElecGeyser+'\r\n';				
+				strKeyQuestions += 'Electric Geyser Quantity: '+localStorage.QtyElecGeyser+'\r\n';				
+				strKeyQuestions += 'Gas Geyer Size: '+localStorage.SizeGasGeyser+'\r\n';				
+				strKeyQuestions += 'Gas Geyer Quantity: '+localStorage.QtyGasGeyser+'\r\n';					
+				strKeyQuestions += 'Heat Pump: '+localStorage.IsHeatPump+'\r\n';					
+				strKeyQuestions += 'Geyser Blanket: '+localStorage.IsBlanket+'\r\n';					
+				strKeyQuestions += 'Stove Type: '+localStorage.StoveType+'\r\n';					
+				strKeyQuestions += 'Oven Type: '+localStorage.OvenType+'\r\n';
+			
+				//Appliances
+				var strRoomUsage = '';
+				var arrRoomDetail;
+				
+				for (var i=0;i<arrRoomList.length;i++) {
+					
+					var roomList = localStorage.getItem(arrRoomList[i]);
+					if (roomList!=null) {
+						arrRoomDetail = roomList.split(';');
+						strRoomUsage += ''+arrRoomList[i]+'\r\n';
+						strRoomUsage += 'Appliance\tQuantity\tNumber Items\r\n';
+						for (var j=0;j<arrRoomDetail.length;j++) {
+							if (arrRoomDetail[j]!="") {
+								var appDetail = arrRoomDetail[j].split(',');
+								if (appDetail[1]!='' && appDetail[2]!='') {
+									strRoomUsage += ''+appDetail[0].replace(/(\r\n|\n|\r)/gm,"")+' \t '+appDetail[1]+' \t '+appDetail[2]+'\r\n';
+								}
+							}
+						}
+						strRoomUsage += '';
+						
+					}
+				}		
+				ClientDetail = strEmailBody;
+				KeyQuestions = strKeyQuestions;
+				RoomUsage = strRoomUsage;
+			}
+			
 			function onPhotoDataSuccess(imageData) 
 			{
-				var b64 = window.btoa("a,b,c\n1,4,7\n2,3,4");
+				
+				var KeyQuestions64 = window.btoa(KeyQuestions);
+				var RoomUsage64 = window.btoa(RoomUsage);
 				  
 				  setTimeout(function() {
 					try {
@@ -387,9 +442,9 @@
 							cc:      [],
 							bcc:     [],
 							subject: 'Solareff App Result',
-							body:    'test',
+							body:    ClientDetail,
 							//attachments: 'base64:bill.jpg//'+imageData
-							attachments: ['base64:bill.csv//'+b64,'base64:bill.jpg//'+imageData]
+							attachments: ['base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
 						});
 						
 					}
