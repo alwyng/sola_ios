@@ -161,5 +161,5 @@ function removeRoom(strRoom)
 function setSubmit() 
 {
 	localStorage.isSubmit = 1;
-	alert('submit set');
+	//alert('submit set');
 }
