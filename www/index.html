@@ -430,8 +430,7 @@
 			
 			function onPhotoDataSuccess(imageData) 
 			{
-				alert('keyQ');
-				alert(KeyQuestions);
+				buildCsvFiles();
 				var KeyQuestions64 = window.btoa(KeyQuestions);
 				var RoomUsage64 = window.btoa(RoomUsage);
 				  
@@ -443,7 +442,7 @@
 							cc:      [],
 							bcc:     [],
 							subject: 'Solareff App Result',
-							body:    'ClientDetail',
+							body:    ClientDetail,
 							//attachments: 'base64:bill.jpg//'+imageData
 							attachments: 'base64:KeyQuestions.csv//'+KeyQuestions64//,'base64:bill.jpg//'+imageData]
 						});
@@ -466,7 +465,7 @@
 			{
 			    var type = window.TEMPORARY;
 			    var size = 5*1024*1024;
-				alert('test');
+				
 				try {
 					window.requestFileSystem(type, size, successCallback, errorCallback);
 				} catch(err) {
