@@ -461,9 +461,6 @@
 				var RoomUsage64 = window.btoa(RoomUsage);
 				alert('android test');
 				  
-				  setTimeout(function() {
-					try {
-						
 						cordova.plugins.email.open({
 							to:      'alwyn.grobler@gmail.com',
 							cc:      [],
@@ -475,11 +472,6 @@
 							//attachments: ['base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64]
 						});
 						
-					}
-					catch(err) {
-						alert(err.message);
-					}
-				  }, 0);
 				  
 			}
 			
