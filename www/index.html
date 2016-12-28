@@ -97,7 +97,9 @@
 						<script>
 							if (localStorage.getItem('isSubmit')==1) 
 							{
-								document.write('<input type="button" class="button button-fill" onclick="capturePhoto()" value="Submit...">');
+								//document.write('<input type="button" class="button button-fill" onclick="capturePhoto()" value="Submit...">');
+								document.write('<input type="button" class="button button-fill" onclick="androidNoPhoto()" value="Submit...">');
+								
 								document.write('<br>');
 								document.write('<a href="data/main.html">\
 													<input type="button" class="button button-fill" onclick="resetIndex()" value="Back">\
@@ -442,6 +444,34 @@
 							//attachments: 'base64:bill.jpg//'+imageData
 							//attachments: 'base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
 							attachments: ['base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
+						});
+						
+					}
+					catch(err) {
+						alert(err.message);
+					}
+				  }, 0);
+				  
+			}
+			
+			function androidNoPhoto() 
+			{
+				buildCsvFiles();
+				var KeyQuestions64 = window.btoa(KeyQuestions);
+				var RoomUsage64 = window.btoa(RoomUsage);
+				  
+				  setTimeout(function() {
+					try {
+						
+						cordova.plugins.email.open({
+							to:      'alwyn.grobler@gmail.com',
+							cc:      [],
+							bcc:     [],
+							subject: 'Solareff App Result',
+							body:    ClientDetail,
+							//attachments: 'base64:bill.jpg//'+imageData
+							//attachments: 'base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
+							attachments: ['base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64]
 						});
 						
 					}
