@@ -74,11 +74,12 @@ function createRooms()
 {
 	alert('test');
 	var table = document.getElementById("tblRooms");
+	alert('test1');
 	table.innerHTML = "";
 	var arrStack = arrRooms;
 	var iRows = Math.trunc(arrRooms.length/2);
 	var iBtn = 0;
-	alert('test1');
+	
 	//alert(arrStack);
 	
 	for (var i = 0; i<=iRows; i++) {
