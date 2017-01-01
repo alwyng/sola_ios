@@ -75,10 +75,10 @@ function createRooms()
 	alert('test');
 	var table = document.getElementById("tblRooms");
 	table.innerHTML = "";
-	alert('test1');
 	var arrStack = arrRooms;
 	var iRows = Math.trunc(arrRooms.length/2);
 	var iBtn = 0;
+	alert('test2');
 	
 	//alert(arrStack);
 	
