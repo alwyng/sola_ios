@@ -74,8 +74,8 @@ function createRooms()
 {
 	alert('test');
 	var table = document.getElementById("tblRooms");
-	alert('test1');
 	table.innerHTML = "";
+	alert('test1');
 	var arrStack = arrRooms;
 	var iRows = Math.trunc(arrRooms.length/2);
 	var iBtn = 0;
