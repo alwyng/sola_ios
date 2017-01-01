@@ -72,6 +72,7 @@ function load()
 
 function createRooms()
 {
+	alert('test');
 	var table = document.getElementById("tblRooms");
 	table.innerHTML = "";
 	var arrStack = arrRooms;
