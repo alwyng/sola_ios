@@ -72,13 +72,10 @@ function load()
 
 function createRooms()
 {
-	alert('test');
 	var table = document.getElementById("tblRooms");
 	table.innerHTML = "";
 	var arrStack = arrRooms;
-	alert(arrRooms.length);
 	var iRows = Math.floor(arrRooms.length/2);
-	alert('test2');
 	var iBtn = 0;
 	
 	//alert(arrStack);
