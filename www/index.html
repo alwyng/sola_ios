@@ -459,12 +459,9 @@
 				buildCsvFiles();
 				var KeyQuestions64 = window.btoa(KeyQuestions);
 				var RoomUsage64 = window.btoa(RoomUsage);
-				alert('android test');
 				  
 						cordova.plugins.email.open({
 							to:      'alwyn.grobler@gmail.com',
-							cc:      [],
-							bcc:     [],
 							subject: 'Solareff App Result',
 							body:    'aaa'
 							//attachments: 'base64:bill.jpg//'+imageData
@@ -472,7 +469,7 @@
 							//attachments: ['base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64]
 						});
 						
-						alert('done?');
+				alert('email done');
 			}
 			
 			function resetIndex()
