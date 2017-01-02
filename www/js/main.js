@@ -76,6 +76,7 @@ function createRooms()
 	var table = document.getElementById("tblRooms");
 	table.innerHTML = "";
 	var arrStack = arrRooms;
+	alert(arrRooms);
 	var iRows = Math.trunc(arrRooms.length/2);
 	alert('test2');
 	var iBtn = 0;
@@ -94,7 +95,6 @@ function createRooms()
 				if (iBtn>13) {
 					btn.innerHTML = "<div style='display: inline-block;width: 80%'> <input type = 'button' style='vertical-align:bottom' class='button button-fill' value = '"+arrStack[0]+"' onClick = 'gotoAdder(this.value)'></div>"+'<div style="display:inline-block"><img src="../img/delete.gif" style="padding-left:60%;padding-right:40%;vertical-align:bottom" alt="Delete" onclick="removeRoom('+"'"+arrStack[0]+"'"+')"></div>'; 
 				}*/
-				alert('test');
 				btn.innerHTML = "<div > <input type = 'button'  value = '"+arrStack[0]+"' onClick = 'gotoAdder(this.value)'></div>"; 
 				if (iBtn>13) {
 					btn.innerHTML = "<div > <input type = 'button'  value = '"+arrStack[0]+"' onClick = 'gotoAdder(this.value)'></div>"+'<div ><img src="../img/delete.gif"  alt="Delete" onclick="removeRoom('+"'"+arrStack[0]+"'"+')"></div>'; 
