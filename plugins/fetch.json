@@ -1,9 +1,8 @@
 {
     "cordova-plugin-email-composer": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/katzer/cordova-plugin-email-composer.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "cordova-plugin-email-composer@0.8.3"
         },
         "is_top_level": true,
         "variables": {}
