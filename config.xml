@@ -9,6 +9,7 @@
     </author>
 	
     <plugin name="cordova-plugin-camera" source="npm" spec="2.3.0" />
+	<plugin name="cordova-plugin-email-composer" source="npm" spec="0.8.3" />
     <content src="index.html" />
     <access origin="*" />
     <preference name="windows-target-version" value="10.0" />
