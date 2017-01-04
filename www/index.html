@@ -421,9 +421,7 @@
 						
 					}
 				}		
-				alert(strEmailBody);
-				alert(strKeyQuestions);
-				alert(strRoomUsage);
+				
 				ClientDetail = strEmailBody;
 				KeyQuestions = strKeyQuestions;
 				RoomUsage = strRoomUsage;
@@ -443,10 +441,10 @@
 							cc:      [],
 							bcc:     [],
 							subject: 'Solareff App Result',
-							body:    ClientDetail,
+							body:    'none'//ClientDetail
 							//attachments: 'base64:bill.jpg//'+imageData
 							//attachments: 'base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
-							attachments: ['base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
+							//attachments: ['base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
 						});
 						
 					}
