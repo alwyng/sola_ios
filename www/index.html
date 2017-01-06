@@ -97,6 +97,12 @@
 						<script>
 							if (localStorage.getItem('isSubmit')==1) 
 							{
+								document.write('<div> &nbsp </div>');
+								document.write('<div> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
+								document.write('<div> &nbsp </div>');
+								document.write('<div> Total kWh: '+String(localStorage.kWh)+'</div>');
+								document.write('<div> &nbsp </div>');
+								
 								document.write('<input type="button" class="button button-fill" onclick="capturePhoto()" value="Submit...">');
 								//document.write('<input type="button" class="button button-fill" onclick="androidNoPhoto()" value="Submit...">');
 								
