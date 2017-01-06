@@ -354,14 +354,18 @@
 			
 			function capturePhoto() 
 			{
-				try
-				{
-					// Take picture using device camera and retrieve image as base64-encoded string
-					navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,destinationType: Camera.DestinationType.DATA_URL });
-					//onPhotoDataSuccess(null);
-				}
-				catch(err) {
-					alert(err.message);
+				if ("roomList" in localStorage) {
+					try
+					{
+						// Take picture using device camera and retrieve image as base64-encoded string
+						navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,destinationType: Camera.DestinationType.DATA_URL });
+						//onPhotoDataSuccess(null);
+					}
+					catch(err) {
+						alert(err.message);
+					}
+				} else {
+					alert('No room usage recorded');
 				}
 			}
 			
@@ -429,48 +433,36 @@
 			
 			function onPhotoDataSuccess(imageData) 
 			{
-				buildCsvFiles();
-				var KeyQuestions64 = window.btoa(KeyQuestions);
-				var RoomUsage64 = window.btoa(RoomUsage);
-				  
-				  setTimeout(function() {
-					try {
-						
-						cordova.plugins.email.open({
-							to:      'alwyn.grobler@gmail.com',
-							cc:      [],
-							bcc:     [],
-							subject: 'Solareff App Result',
-							body:    ClientDetail,
-							//attachments: 'base64:bill.jpg//'+imageData
-							//attachments: 'base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
-							attachments: ['base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
-						});
-						
-					}
-					catch(err) {
-						alert(err.message);
-					}
-				  }, 0);
-				  
-			}
-			
-			function androidNoPhoto() 
-			{
-				buildCsvFiles();
-				var KeyQuestions64 = window.btoa(KeyQuestions);
-				var RoomUsage64 = window.btoa(RoomUsage);
-				  
-						cordova.plugins.email.open({
-							to:      'alwyn.grobler@gmail.com',
-							subject: 'Solareff App Result',
-							body:    'aaa'
-							//attachments: 'base64:bill.jpg//'+imageData
-							//attachments: 'base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
-							//attachments: ['base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64]
-						});
-						
-				alert('email done');
+				if ("roomList" in localStorage) {
+					buildCsvFiles();
+					var KeyQuestions64 = window.btoa(KeyQuestions);
+					var RoomUsage64 = window.btoa(RoomUsage);
+					  
+					  setTimeout(function() {
+						try {
+							
+							cordova.plugins.email.open({
+								to:      'alwyn.grobler@gmail.com',
+								cc:      [],
+								bcc:     [],
+								subject: 'Solareff App Result',
+								body:    ClientDetail,
+								//attachments: 'base64:bill.jpg//'+imageData
+								//attachments: 'base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
+								attachments: ['base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
+							});
+							
+						}
+						catch(err) {
+							alert(err.message);
+						}
+					  }, 0);
+				}
+				else {
+					ClientDetail = strEmailBody;
+					KeyQuestions = "No usage capturing done";
+					RoomUsage = "No usage capturing done";
+				}
 			}
 			
 			function resetIndex()
