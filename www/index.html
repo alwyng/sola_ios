@@ -101,6 +101,8 @@
 								document.write('<div> &nbsp </div>');
 								if ("roomList" in localStorage) {
 									document.write('<div> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
+								} else {
+									document.write('<div> Rooms captured: NO ROOMS CAPTURED YET</div>');
 								}
 								document.write('<div> &nbsp </div>');
 								document.write('<div> Total kWh: '+String(localStorage.kWh)+'</div>');
