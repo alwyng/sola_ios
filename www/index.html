@@ -97,8 +97,11 @@
 						<script>
 							if (localStorage.getItem('isSubmit')==1) 
 							{
+								
 								document.write('<div> &nbsp </div>');
-								document.write('<div> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
+								if ("roomList" in localStorage) {
+									document.write('<div> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
+								}
 								document.write('<div> &nbsp </div>');
 								document.write('<div> Total kWh: '+String(localStorage.kWh)+'</div>');
 								document.write('<div> &nbsp </div>');
