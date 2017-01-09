@@ -13,4 +13,5 @@
     <content src="index.html" />
     <access origin="*" />
     <preference name="windows-target-version" value="10.0" />
+	<plugin name="cordova-plugin-ios-camera-permissions" source="npm" spec="1.0.4" />
 </widget>
