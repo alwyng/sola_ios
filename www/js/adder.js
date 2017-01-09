@@ -65,7 +65,7 @@ function getState()
 		for (i = 0; i < arrApps.length-1; i++) {
 			var row = table.insertRow(table.rows.length);
 			var cell1 = row.insertCell(0);
-			cell1.innerHTML = "<div style='width:200px;'>"+arrApps[i].split(",")[0]+"</div>";
+			cell1.innerHTML = "<div style='width:130px;'>"+arrApps[i].split(",")[0]+"</div>";
 			//add the capture boxes
 			var hrs = document.createElement('input');
 			hrs.setAttribute('type', 'text');
@@ -147,7 +147,7 @@ function persistTable()
 
 	//make sure to recalculate kWh
 	recalc();
-	
+
 	//persist roomlist i.e. if room is not added then add
 	setRoomList();  //this is not the correct place as it increases overhead. need to change this logic at some stage
 
@@ -171,7 +171,7 @@ function AddApp()
 	//add the selected appliance
 	var cell1 = row.insertCell(0);
 	if (txtAddApp!='Other (Text box to add to existing list)') {
-		cell1.innerHTML = "<div style='width:200px;'>"+txtAddApp+"</div>";
+		cell1.innerHTML = "<div style='width:130px;'>"+txtAddApp+"</div>";
 	} else {
 		var uid = ("0000" + (Math.random()*Math.pow(36,4) << 0).toString(36)).slice(-4);
 		cell1.innerHTML = '<input placeholder="Custom Appliance" id="'+uid+'">';
