@@ -38,7 +38,7 @@
 		* Create your own at http://cspisawesome.com
 		-->
 		<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
-		
+
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" href="css/framework7.ios.css">
 		<link rel="stylesheet" href="css/framework7.ios.colors.css">
@@ -50,13 +50,13 @@
 		<script src="js/login.js"></script>
     </head>
     <body onload="load()">
-		<div class="statusbar-overlay">    	
+		<div class="statusbar-overlay">
 		</div>
 	    <div class="views">
 	      <div class="view view-main">
 	        <div class="navbar">
 	          <div class="navbar-inner">
-	            <div class="left">	            	
+	            <div class="left">
 	            </div>
 	            <div class="center sliding">Solareff Mobile</div>
 	            <div class="right">
@@ -74,7 +74,7 @@
 							if (!localStorage["isSubmit"]) {
 								localStorage.isSubmit = 0;   //set to 0 if not initialised
 							}
-							if (localStorage.getItem('isSubmit')==0 /*or localStorage.getItem('isSubmit')==null*/) 
+							if (localStorage.getItem('isSubmit')==0 /*or localStorage.getItem('isSubmit')==null*/)
 							{
 								document.write('<form style="padding-left:2%;" name="myform" action="">\
 												<h3>Name</h3>\
@@ -95,21 +95,27 @@
 						</script>
 						<br>
 						<script>
-							if (localStorage.getItem('isSubmit')==1) 
+							if (localStorage.getItem('isSubmit')==1)
 							{
 								document.write('<div> &nbsp </div>');
+                document.write('<h3 style="padding-left:2%;">Submit to Solareff</h3>');
+                document.write('<div> &nbsp </div>');
 								document.write('<div> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
 								document.write('<div> &nbsp </div>');
 								document.write('<div> Total kWh: '+String(localStorage.kWh)+'</div>');
 								document.write('<div> &nbsp </div>');
-								
-								document.write('<input type="button" class="button button-fill" onclick="capturePhoto()" value="Submit...">');
+
+								document.write('<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%;; padding-right:10%;">\
+                          <input type="button" class="button button-fill" onclick="capturePhoto()" value="Take photo and submit information">\
+                          </div>');
 								//document.write('<input type="button" class="button button-fill" onclick="androidNoPhoto()" value="Submit...">');
-								
+
 								document.write('<br>');
-								document.write('<a href="data/main.html">\
+								document.write('<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%;; padding-right:10%;">\
+                        <a href="data/main.html">\
 													<input type="button" class="button button-fill" onclick="resetIndex()" value="Back">\
-												</a>');
+												</a>\
+                        </div>');
 							}
 						</script>
 				    </div>
@@ -125,9 +131,9 @@
 				</div>
 			</div>
 	       </div>
-	      </div>	
-		  
-	
+	      </div>
+
+
         <div>
             <div class="app">
                 <h1>Email Example</h1>
@@ -357,8 +363,8 @@
 
                 return css.concat(html);
             };
-			
-			function capturePhoto() 
+
+			function capturePhoto()
 			{
 				if ("roomList" in localStorage) {
 					try
@@ -374,46 +380,46 @@
 					alert('No room usage recorded');
 				}
 			}
-			
-			function onFail(message) 
+
+			function onFail(message)
 			{
 				setTimeout(function() {
 					alert('Failed because: ' + message);
 				}, 0);
-				
+
 			}
-			
+
 			var ClientDetail='';
 			var KeyQuestions='';
 			var RoomUsage='';
-			
+
 			function buildCsvFiles()
 			{
 				var arrRoomList = localStorage.roomList.split(';');
-						
+
 				//handle email body user details
 				var strEmailBody = 'Name: '+localStorage.userName+' \n';
 				strEmailBody += 'Surname: '+localStorage.userSurname+' \n';
 				strEmailBody += 'Email: '+localStorage.userEmail+' \n';
-			
+
 				//Key questions
-				var strKeyQuestions = 'Solar Geyser Size: '+localStorage.sizeSolGeyser+'\r\n';				
-				strKeyQuestions += 'Solar Geyser Quantity: '+localStorage.QtySolGeyser+'\r\n';					
-				strKeyQuestions += 'Electric Geyser Size: '+localStorage.SizeElecGeyser+'\r\n';				
-				strKeyQuestions += 'Electric Geyser Quantity: '+localStorage.QtyElecGeyser+'\r\n';				
-				strKeyQuestions += 'Gas Geyer Size: '+localStorage.SizeGasGeyser+'\r\n';				
-				strKeyQuestions += 'Gas Geyer Quantity: '+localStorage.QtyGasGeyser+'\r\n';					
-				strKeyQuestions += 'Heat Pump: '+localStorage.IsHeatPump+'\r\n';					
-				strKeyQuestions += 'Geyser Blanket: '+localStorage.IsBlanket+'\r\n';					
-				strKeyQuestions += 'Stove Type: '+localStorage.StoveType+'\r\n';					
+				var strKeyQuestions = 'Solar Geyser Size: '+localStorage.sizeSolGeyser+'\r\n';
+				strKeyQuestions += 'Solar Geyser Quantity: '+localStorage.QtySolGeyser+'\r\n';
+				strKeyQuestions += 'Electric Geyser Size: '+localStorage.SizeElecGeyser+'\r\n';
+				strKeyQuestions += 'Electric Geyser Quantity: '+localStorage.QtyElecGeyser+'\r\n';
+				strKeyQuestions += 'Gas Geyer Size: '+localStorage.SizeGasGeyser+'\r\n';
+				strKeyQuestions += 'Gas Geyer Quantity: '+localStorage.QtyGasGeyser+'\r\n';
+				strKeyQuestions += 'Heat Pump: '+localStorage.IsHeatPump+'\r\n';
+				strKeyQuestions += 'Geyser Blanket: '+localStorage.IsBlanket+'\r\n';
+				strKeyQuestions += 'Stove Type: '+localStorage.StoveType+'\r\n';
 				strKeyQuestions += 'Oven Type: '+localStorage.OvenType+'\r\n';
-			
+
 				//Appliances
 				var strRoomUsage = '';
 				var arrRoomDetail;
-				
+
 				for (var i=0;i<arrRoomList.length;i++) {
-					
+
 					var roomList = localStorage.getItem(arrRoomList[i]);
 					if (roomList!=null) {
 						arrRoomDetail = roomList.split(';');
@@ -428,25 +434,25 @@
 							}
 						}
 						strRoomUsage += '';
-						
+
 					}
-				}		
-				
+				}
+
 				ClientDetail = strEmailBody;
 				KeyQuestions = strKeyQuestions;
 				RoomUsage = strRoomUsage;
 			}
-			
-			function onPhotoDataSuccess(imageData) 
+
+			function onPhotoDataSuccess(imageData)
 			{
 				if ("roomList" in localStorage) {
 					buildCsvFiles();
 					var KeyQuestions64 = window.btoa(KeyQuestions);
 					var RoomUsage64 = window.btoa(RoomUsage);
-					  
+
 					  setTimeout(function() {
 						try {
-							
+
 							cordova.plugins.email.open({
 								to:      'alwyn.grobler@gmail.com',
 								cc:      [],
@@ -457,7 +463,7 @@
 								//attachments: 'base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
 								attachments: ['base64:KeyQuestions.csv//'+KeyQuestions64,'base64:RoomUsage.csv//'+RoomUsage64,'base64:bill.jpg//'+imageData]
 							});
-							
+
 						}
 						catch(err) {
 							alert(err.message);
@@ -470,7 +476,7 @@
 					RoomUsage = "No usage capturing done";
 				}
 			}
-			
+
 			function resetIndex()
 			{
 				localStorage.isSubmit = 0;
@@ -481,13 +487,13 @@
 			{
 			    var type = window.TEMPORARY;
 			    var size = 5*1024*1024;
-				
+
 				try {
 					window.requestFileSystem(type, size, successCallback, errorCallback);
 				} catch(err) {
 					alert(err.message);
 				}
-			}	
+			}
 
 			function successCallback(fs) {
 				fs.root.getFile('sola.txt', {create: true}, function(fileEntry) {
@@ -510,8 +516,8 @@
 
 			function errorCallback(error) {
 			  alert("ERROR: " + error.code)
-			}			
-			
+			}
+
 			function readFile() {
 			   var type = window.TEMPORARY;
 			   var size = 5*1024*1024;
@@ -540,8 +546,8 @@
 			   function errorCallback(error) {
 				  alert("ERROR: " + error.code)
 			   }
-				
-			}	
+
+			}
         </script>
     </body>
 </html>
