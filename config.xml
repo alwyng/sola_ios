@@ -4,18 +4,17 @@
     <description>
         Solareff Electricity Consumption Calculator
     </description>
-    <author href = "http://www.dontknowyet.co.za" email = "alwyn.grobler@gmail.com">
+    <author email="alwyn.grobler@gmail.com" href="http://www.dontknowyet.co.za">
       Appdev
     </author>
-	
     <plugin name="cordova-plugin-camera" source="npm" spec="2.3.0" />
-	<plugin name="cordova-plugin-email-composer" source="npm" spec="0.8.3" />
+    <plugin name="cordova-plugin-email-composer" source="npm" spec="0.8.3" />
     <content src="index.html" />
     <access origin="*" />
     <preference name="windows-target-version" value="10.0" />
-	<platform name="ios">
+    <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-	<plugin name="cordova-plugin-ios-camera-permissions" source="npm" spec="~1.0.4" />
+    <plugin name="cordova-plugin-ios-camera-permissions" spec="~1.0.4" />
 </widget>
