@@ -1,0 +1,21 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-email-composer": {
+            "PACKAGE_NAME": "solareff.app.com"
+        },
+        "cordova-plugin-ios-camera-permissions": {
+            "PACKAGE_NAME": "solareff.app.com"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "solareff.app.com"
+        }
+    },
+    "dependent_plugins": {}
+}

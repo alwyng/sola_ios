@@ -1,0 +1,50 @@
+h1 {
+    color: Black;
+}
+
+a {
+	color: Black;
+}
+
+/*table {
+	height: 100%;
+	width: 100%;
+	font-size: 5vw;
+	text-align: center;
+}*/
+
+tr {
+	height: 40px;
+}
+
+input {
+	font-size: 16px;
+}
+
+button {
+	font-size: 16px;
+}
+
+img.centered {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+form.center {
+	text-align: center;
+}
+
+.kwhstyle {
+	text-align: center;
+	width: 100%;
+	font-size:170%;
+	font-family: monospace;
+	font-weight: bold;
+	color: white;
+	background-color: black;
+}
+
+.spacer {
+	background: #f7f7f8;
+}

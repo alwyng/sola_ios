@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	    <meta name="mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">		
+		<title>Solareff</title>
+		<script type="text/javascript" charset="utf-8" src="../cordova.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			var pictureSource;   // picture source
+			var destinationType; // sets the format of returned value
+
+			// Wait for device API libraries to load
+			//
+			document.addEventListener("deviceready",onDeviceReady,false);
+
+			// device APIs are available
+			//
+			function onDeviceReady() 
+			{
+				pictureSource=navigator.camera.PictureSourceType;
+				destinationType=navigator.camera.DestinationType;
+				alert('submit ready');
+			}
+			
+			document.addEventListener("deviceready",onDeviceReady,false);
+			function onDeviceReady()
+			{
+				/*if (cordova.plugins.email) {
+					alert('Cordova available');
+				};
+				alert('Device Ready');*/
+			}
+			
+			function onFail(message) 
+			{
+				setTimeout(function() {
+					alert('Failed because: ' + message);
+				}, 0);
+				
+			}
+			
+			function onPhotoDataSuccess(imageData) 
+			{
+					
+				  // Uncomment to view the base64-encoded image data
+				  // console.log(imageData);
+
+				  // Get image handle
+				  //
+				  //var smallImage = document.getElementById('smallImage');
+
+				  // Unhide image elements
+				  //
+				  //smallImage.style.display = 'block';
+
+				  // Show the captured photo
+				  // The in-line CSS rules are used to resize the image
+				  //
+				  //alert('222');
+				  //smallImage.src = "data:image/jpeg;base64," + imageData;
+				 
+				  //document.getElementById('myP').innerHTML = imageData;
+				  
+				  //alert('333');
+				  
+				  setTimeout(function() {
+					try {
+						var arrRoomList = localStorage.roomList.split(';');
+						
+						//handle email body user details
+						var strEmailBody = 'Name: '+localStorage.userName+'\r\n';
+						strEmailBody += 'Surname: '+localStorage.userSurname+'\r\n';
+						strEmailBody += 'Email: '+localStorage.userEmail+'\r\n';
+						
+						//Key questions
+						strEmailBody += 'Solar Geyser Size: '+localStorage.sizeSolGeyser+'\r\n';				
+						strEmailBody += 'Solar Geyser Quantity: '+localStorage.QtySolGeyser+'\r\n';					
+						strEmailBody += 'Electric Geyser Size: '+localStorage.SizeElecGeyser+'\r\n';				
+						strEmailBody += 'Electric Geyser Quantity: '+localStorage.QtyElecGeyser+'\r\n';				
+						strEmailBody += 'Gas Geyer Size: '+localStorage.SizeGasGeyser+'\r\n';				
+						strEmailBody += 'Gas Geyer Quantity: '+localStorage.QtyGasGeyser+'\r\n';					
+						strEmailBody += 'Heat Pump: '+localStorage.IsHeatPump+'\r\n';					
+						strEmailBody += 'Geyser Blanket: '+localStorage.IsBlanket+'\r\n';					
+						strEmailBody += 'Stove Type: '+localStorage.StoveType+'\r\n';					
+						strEmailBody += 'Oven Type: '+localStorage.OvenType+'\r\n';
+						
+						//Appliances
+						strEmailBody += 'Room/Appliance\tQuantity\tNumber Items\r\n';
+						var arrRoomDetail;
+						
+						for (var i=0;i<arrRoomList.length;i++) {
+							
+							var roomList = localStorage.getItem(arrRoomList[i]);
+							if (roomList!=null) {
+								arrRoomDetail = roomList.split(';');
+								strEmailBody += '\t '+arrRoomList[i]+'\r\n';
+								for (var j=0;j<arrRoomDetail.length;j++) {
+									if (arrRoomDetail[j]!="") {
+										var appDetail = arrRoomDetail[j].split(',');
+										if (appDetail[1]!='' && appDetail[2]!='') {
+											strEmailBody += '\t '+appDetail[0]+' \t '+appDetail[1]+' \t '+appDetail[2]+'\r\n';
+										}
+									}
+								}
+								strEmailBody += '';
+								//alert(strEmailBody);
+							}
+						}
+						strEmailBody += '';
+						//alert(strEmailBody);
+					
+						cordova.plugins.email.open({
+							to:      'paul@solareff.co.za',
+							cc:      [],
+							bcc:     [],
+							subject: 'Solareff App Result',
+							body:    strEmailBody,
+							attachments: 'base64:bill.jpg//'+imageData
+						});
+						
+						window.location.href = 'thankyou.html';
+					}
+					catch(err) {
+						alert(err.message);
+					}
+					//alert('444.1');
+				  }, 0);
+				  
+				  //alert('444.2');
+			}
+			
+			function capturePhoto() 
+			{
+				try
+				{
+					// Take picture using device camera and retrieve image as base64-encoded string
+					navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,destinationType: Camera.DestinationType.DATA_URL });
+					//onPhotoDataSuccess(null);
+				}
+				catch(err) {
+					alert(err.message);
+				}
+			}
+		
+			function getBase64Image(img) {
+				// Create an empty canvas element
+				var canvas = document.createElement("canvas");
+				canvas.width = img.width;
+				canvas.height = img.height;
+
+				// Copy the image contents to the canvas
+				var ctx = canvas.getContext("2d");
+				ctx.drawImage(img, 0, 0);
+
+				// Get the data-URL formatted image
+				// Firefox supports PNG and JPEG. You could check img.src to
+				// guess the original format, but be aware the using "image/jpg"
+				// will re-encode the image.
+				var dataURL = canvas.toDataURL("image/png");
+
+				return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+			}
+			
+			function test()
+			{
+				var image = document.getElementById('myImage');
+				
+			}
+			
+		</script>
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	    <link rel="stylesheet" href="../css/framework7.ios.css">
+	    <link rel="stylesheet" href="../css/framework7.ios.colors.css">
+	    <link rel="stylesheet" href="../css/kitchen-sink.css">
+	    <link rel="icon" href="../res/icon/img/logo.png">
+	    <link rel="apple-touch-icon" href="../res/icon/img/logo.png">		
+		<script src="../js/recalc.js"></script>
+		<script src="../js/submit.js"></script>
+	</head>
+	<body onload="load()">
+	    <div class="statusbar-overlay">    	
+	    </div>
+	    <div class="views">
+	      <div class="view view-main">
+	        <div class="navbar">
+	          <div class="navbar-inner">
+	        	<div class="left sliding"><a href="main.html" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>	            	
+	            <div class="center sliding">
+	            	Submission
+				</div>
+	            <div class="right sliding">
+	   				<form class="center" name="frmKwh" action="">
+						<input size="9" class="kwhstyle" type="text" name="txtKwh" disabled>
+					</form>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="pages navbar-through toolbar-through">
+          		<div class="page">
+            		<div class="page-content">
+						<div class="app">
+						<a href="http://www.solareff.co.za">
+							<img style='width:100%;height:100%;object-fit: contain;' src="../img/logo.jpg">
+						</a>  
+						<!--<form class="center" name="frmKwh" action="">
+							<input type="text" name="txtKwh" disabled>
+						</form>-->
+						<h3 style="padding-left:2%;">Submit to Solareff</h3>
+						<!--<a href="main.html">
+							<input type="button" name="btnBack" value="Back">
+						</a>-->
+						<script type="text/javascript" src="../cordova.js"></script>
+						<script type="text/javascript" src="../js/index.js"></script>
+						
+						<div style="padding-left:2%;">
+							<script>
+								/*var arrRoomList = localStorage.roomList.split(';');
+								var strEmailBody = 'Room,Quantity,Number Items\n';
+								var arrRoomDetail;
+								var arrAppDetail;
+								for (var i=0;i<arrRoomList.length;i++) {
+									arrRoomDetail = localStorage.getItem(arrRoomList[i]).split(';');
+									for (var j=0;j<arrRoomDetail.length;j++) {
+										if (arrRoomDetail[j]!="") {
+											arrAppDetail = arrRoomDetail[j].split(',');
+											if (j==0) {
+												document.write("<br>");
+												document.write(arrRoomList[i]+" <br>");
+												document.write("&nbsp&nbsp&nbsp"+arrAppDetail[0]+"\t"+"Hours="+arrAppDetail[1]+"\t Quantity="+arrAppDetail[2])+" <br>";
+												document.write("<br>");
+											} else {
+												document.write("&nbsp&nbsp&nbsp"+arrAppDetail[0]+"\t"+"Hours="+arrAppDetail[1]+"\t Quantity="+arrAppDetail[2])+" <br>";
+												document.write("<br>");
+											}
+										}
+									}
+								}*/
+								
+								var arrRoomList = localStorage.roomList.split(';');
+								var strEmailBody = '<table><tr><td>Room/Appliance</td><td>Quantity</td><td>Number Items</td></tr>';
+								var arrRoomDetail;
+								
+								for (var i=0;i<arrRoomList.length;i++) {
+									
+									var roomList = localStorage.getItem(arrRoomList[i]);
+									if (roomList!=null) {
+										arrRoomDetail = roomList.split(';');
+										strEmailBody += '<tr><td> '+arrRoomList[i]+' </td></tr><tr>';
+										for (var j=0;j<arrRoomDetail.length;j++) {
+											if (arrRoomDetail[j]!="") {
+												var appDetail = arrRoomDetail[j].split(',');
+												if (appDetail[1]!='' && appDetail[2]!='') {
+													strEmailBody += '<tr><td> '+appDetail[0]+' </td><td> '+appDetail[1]+' </td><td> '+appDetail[2]+' </td></tr>';
+												}
+											}
+										}
+										strEmailBody += '</tr>';
+									}
+								}
+								strEmailBody += '</table>';
+								//alert(strEmailBody);
+								document.write(strEmailBody);
+								
+								
+								
+								
+								
+								
+							</script>
+						</div>
+						<br>
+						<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%;; padding-right:10%;">									
+							<input class="button button-fill" type="button" name="btnSubmit" onclick="capturePhoto();" value="Take photo and submit information">
+						</div>
+						<br>		
+						</div>				
+									</div>
+								</div>
+							</div>
+							<div class="toolbar">
+								<div class="toolbar-inner">
+									<a href="contact_us.html" class="link">Contact Us
+									</a>
+									<a href="faq.html" class="link">FAQ
+									</a>
+								</div>
+							</div>			
+	       </div>
+	      </div>	          	    
+	</body>
+</html>
