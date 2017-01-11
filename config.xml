@@ -7,10 +7,19 @@
     <author href = "http://www.dontknowyet.co.za" email = "alwyn.grobler@gmail.com">
       Appdev
     </author>
-	
+
     <plugin name="cordova-plugin-camera" source="npm" spec="2.3.0" />
-	<plugin name="cordova-plugin-email-composer" source="npm" spec="0.8.3" />
+	  <plugin name="cordova-plugin-email-composer" source="npm" spec="0.8.3" />
+    <plugin name="cordova-plugin-statusbar" source="npm" spec="2.1.2" />
     <content src="index.html" />
     <access origin="*" />
     <preference name="windows-target-version" value="10.0" />
+
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" onload="true" />
+    </feature>
 </widget>
