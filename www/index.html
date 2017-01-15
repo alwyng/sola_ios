@@ -103,6 +103,7 @@
 								document.write('<h3 style="padding-left:2%;">Submit to Solareff</h3>');
 								document.write('<div> &nbsp </div>');
 								if ("roomList" in localStorage) {
+									alert(localStorage.roomList);
 									document.write('<div style="padding-left:4%;> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
 								} else {
 									document.write('<div style="padding-left:4%;> Rooms captured: NO ROOMS CAPTURED YET</div>');
@@ -476,6 +477,7 @@
 							alert(err.message);
 						}
 					  }, 0);
+					  window.location.href = 'thankyou.html';
 				}
 				else {
 					ClientDetail = strEmailBody;
