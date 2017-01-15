@@ -104,12 +104,12 @@
 								document.write('<div> &nbsp </div>');
 								//alert(localStorage.roomList);
 								document.write('<div style="padding-left:4%;> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
-								if ("roomList" in localStorage) {
+								/*if ("roomList" in localStorage) {
 									alert("11");
 									document.write('<div style="padding-left:4%;> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
 								} else {
 									document.write('<div style="padding-left:4%;> Rooms captured: NO ROOMS CAPTURED YET</div>');
-								}
+								}*/
 
 								document.write('<div> &nbsp </div>');
 								document.write('<div style="padding-left:4%;> Total kWh: '+String(localStorage.kWh)+'</div>');
@@ -383,7 +383,7 @@
 						navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,destinationType: Camera.DestinationType.DATA_URL });
 						//onPhotoDataSuccess(null);
 						//window.location.href = 'thankyou.html';
-						window.location.assign("thankyou.html");
+						window.location.assign("data/thankyou.html");
 					}
 					catch(err) {
 						alert(err.message);
