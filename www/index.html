@@ -102,8 +102,10 @@
 								document.write('<div> &nbsp </div>');
 								document.write('<h3 style="padding-left:2%;">Submit to Solareff</h3>');
 								document.write('<div> &nbsp </div>');
+								//alert(localStorage.roomList);
+								document.write('<div style="padding-left:4%;> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
 								if ("roomList" in localStorage) {
-									alert(localStorage.roomList);
+									alert("11");
 									document.write('<div style="padding-left:4%;> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
 								} else {
 									document.write('<div style="padding-left:4%;> Rooms captured: NO ROOMS CAPTURED YET</div>');
@@ -380,6 +382,8 @@
 						// Take picture using device camera and retrieve image as base64-encoded string
 						navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,destinationType: Camera.DestinationType.DATA_URL });
 						//onPhotoDataSuccess(null);
+						//window.location.href = 'thankyou.html';
+						window.location.assign("thankyou.html");
 					}
 					catch(err) {
 						alert(err.message);
