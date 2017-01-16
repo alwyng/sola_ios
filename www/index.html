@@ -98,12 +98,12 @@
 						<script>
 							if (localStorage.getItem('isSubmit')==1)
 							{
-								
+								document.write('<div id="txtInfo">');
 								document.write('<div> &nbsp </div>');
 								document.write('<h3 style="padding-left:2%;">Submit to Solareff</h3>');
 								document.write('<div> &nbsp </div>');
-								//alert(localStorage.roomList);
-								document.write('<div style="padding-left:4%;> Rooms captured: '+localStorage.roomList/*.replace(new RegExp(';', 'g'), ', ')*/+'</div>');
+								alert('<div style="padding-left:4%;> Rooms captured: '+String(localStorage.roomList)/*.replace(new RegExp(';', 'g'), ', ')*/+'</div>');
+								document.write('<div style="padding-left:4%;> Rooms captured: '+String(localStorage.roomList)/*.replace(new RegExp(';', 'g'), ', ')*/+'</div>');
 								/*if ("roomList" in localStorage) {
 									alert("11");
 									document.write('<div style="padding-left:4%;> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
@@ -114,9 +114,10 @@
 								document.write('<div> &nbsp </div>');
 								document.write('<div style="padding-left:4%;> Total kWh: '+String(localStorage.kWh)+'</div>');
 								document.write('<div> &nbsp </div>');
+								document.write('</div>');
 
 								document.write('<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%;; padding-right:10%;">\
-                          <input type="button" class="button button-fill" onclick="capturePhoto()" value="Take photo and submit information">\
+                          <input id="btnPhoto" type="button" class="button button-fill" onclick="capturePhoto()" value="Take photo and submit information">\
                           </div>');
 								//document.write('<input type="button" class="button button-fill" onclick="androidNoPhoto()" value="Submit...">');
 
@@ -481,7 +482,13 @@
 							alert(err.message);
 						}
 					  }, 0);
-					  window.location.assign("data/thankyou.html");
+					  //window.location.assign("data/thankyou.html");
+					  //if we move to a new page the async email doesn't fire. rather just edit the current page to say thankyou
+					  document.getElementsById("btnPhoto").style.visibility="hidden";
+					  var infoDiv = document.getElementsById("txtInfo");
+					  var thankyou = document.createElement('div');
+					  thankyou.innerHTML = "Thank you for your submission, a consultant will be in touch.";
+					  infoDiv.appendChild(thankyou);
 				}
 				else {
 					ClientDetail = strEmailBody;
