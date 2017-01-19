@@ -67,17 +67,30 @@ function getState()
 			var cell1 = row.insertCell(0);
 			cell1.innerHTML = "<div style='width:130px;'>"+arrApps[i].split(",")[0]+"</div>";
 			//add the capture boxes
-			var hrs = document.createElement('input');
-			hrs.setAttribute('type', 'text');
-			hrs.setAttribute('placeholder', 'Hours per Day');
+			var hrs = document.createElement('select');
+			var option;
+			var inputdata = "Hours per Day||5min||10min||15min||20min||30min||45min||1hour||2hours||3hours||4hours||5hours||6hours||7hours||8hours||9hours||10hours||11hours||12hours||13hours||14hours||15hours||16hours||17hours||18hours||19hours||20hours||21hours||22hours||23hours||24hours";
+			
+			inputdata.split( '||' ).forEach(function( item ) {
+				option = document.createElement( 'option' );
+				option.value = option.textContent = item;
+				hrs.appendChild( option );
+			});
 			hrs.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
 			hrs.addEventListener('change',persistTable);
 			hrs.value = arrApps[i].split(",")[1];
 			var cell2 = row.insertCell(1);
 			cell2.appendChild(hrs);
-			var nbr = document.createElement('input');
-			nbr.setAttribute('type', 'text');
-			nbr.setAttribute('placeholder', 'Quantity');
+			
+			var nbr = document.createElement('select');
+			var option;
+			var inputdata = "Quantity||1||2||3||4||5||6||7||8||9||10";
+
+			inputdata.split( '||' ).forEach(function( item ) {
+				option = document.createElement( 'option' );
+				option.value = option.textContent = item;
+				nbr.appendChild( option );
+			});
 			nbr.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
 			nbr.addEventListener('change',persistTable);
 			nbr.value = arrApps[i].split(",")[2];
@@ -177,16 +190,29 @@ function AddApp()
 		cell1.innerHTML = '<input placeholder="Custom Appliance" id="'+uid+'">';
 	}
 	//add the capture boxes
-    var hrs = document.createElement('input');
-    hrs.setAttribute('type', 'text');
-    hrs.setAttribute('placeholder', 'Hours per Day');
+    var hrs = document.createElement('select');
+	var option;
+	var inputdata = "Hours per Day||5min||10min||15min||20min||30min||45min||1hour||2hours||3hours||4hours||5hours||6hours||7hours||8hours||9hours||10hours||11hours||12hours||13hours||14hours||15hours||16hours||17hours||18hours||19hours||20hours||21hours||22hours||23hours||24hours";
+	
+	inputdata.split( '||' ).forEach(function( item ) {
+		option = document.createElement( 'option' );
+		option.value = option.textContent = item;
+		hrs.appendChild( option );
+	});
 	hrs.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
 	hrs.addEventListener('change',persistTable);
 	var cell2 = row.insertCell(1);
 	cell2.appendChild(hrs);
-	var nbr = document.createElement('input');
-    nbr.setAttribute('type', 'text');
-    nbr.setAttribute('placeholder', 'Quantity');
+	
+	var nbr = document.createElement('select');
+	var option;
+	var inputdata = "Quantity||1||2||3||4||5||6||7||8||9||10";
+
+	inputdata.split( '||' ).forEach(function( item ) {
+		option = document.createElement( 'option' );
+		option.value = option.textContent = item;
+		nbr.appendChild( option );
+	});
     nbr.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
 	nbr.addEventListener("change",persistTable);
 	var cell3 = row.insertCell(2);
