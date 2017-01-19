@@ -76,6 +76,7 @@ function getState()
 				option.value = option.textContent = item;
 				hrs.appendChild( option );
 			});
+			//hrs.setAttribute('id', i);
 			hrs.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
 			hrs.addEventListener('change',persistTable);
 			hrs.value = arrApps[i].split(",")[1];
@@ -129,16 +130,23 @@ function persistTable()
 		for (var j = 0, col; col = row.cells[j]; j++) {
 			var str = col.innerHTML;
 			//alert(str);
-			var idx = str.indexOf('type="text"');
+			var idx = str.indexOf('select');
 			//alert(idx);
 			if (idx>-1) {
 				//App hrs and nbr
 				if (j==2) {
-
-					strPersist += col.children[0].value+";";
+					if (col.children[0].value!="Quantity") {
+						strPersist += col.children[0].value.replace("min","")+";";
+					}
 				}
 				else {
-					strPersist += col.children[0].value+",";
+					if (col.children[0].value!="Hours per Day") {
+						if (col.children[0].value.indexOf("min")>-1) {
+							strPersist += parseInt(col.children[0].value.replace("min",""))/60+";";
+						} else {
+							strPersist += col.children[0].value.replace("hour","").replace("s","")+";";
+						}
+					}
 				}
 				//alert(strPersist);
 			}
@@ -153,9 +161,9 @@ function persistTable()
 			}
 		}
 	}
-	//alert(strPersist);
+	alert(strPersist);
 	//write to storage
-	localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),strPersist);
+	/*localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),strPersist);
 	//alert(localStorage.getItem(localStorage.CurrentApp.replace(/ /g,'')));
 
 	//make sure to recalculate kWh
@@ -164,7 +172,7 @@ function persistTable()
 	//persist roomlist i.e. if room is not added then add
 	setRoomList();  //this is not the correct place as it increases overhead. need to change this logic at some stage
 
-	setDebug();
+	setDebug();*/
 }
 
 function getkWh()
