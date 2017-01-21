@@ -169,7 +169,7 @@ function persistTable()
 			}
 		}
 	}
-	alert(strPersist);
+	//alert(strPersist);
 	//write to storage
 	localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),strPersist);
 	//alert(localStorage.getItem(localStorage.CurrentApp.replace(/ /g,'')));
