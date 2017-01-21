@@ -72,7 +72,11 @@ function load()
 
 function createRooms()
 {
-	roomList = localStorage.roomList;
+	if (localStorage.getItem("roomList")===null) {
+		roomList="";
+	} else {
+		roomList = localStorage.roomList;
+	}
 	
 	var table = document.getElementById("tblRooms");
 	table.innerHTML = "";
