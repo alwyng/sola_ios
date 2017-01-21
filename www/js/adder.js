@@ -79,7 +79,15 @@ function getState()
 			//hrs.setAttribute('id', i);
 			hrs.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
 			hrs.addEventListener('change',persistTable);
-			hrs.value = arrApps[i].split(",")[1];
+			if (arrApps[i].split(",")[1]=="Hours per Day") {
+				hrs.value = arrApps[i].split(",")[1];
+			} else if (parseFloat(arrApps[i].split(",")[1])<1) {
+				hrs.value = parseFloat(arrApps[i].split(",")[1]*60)+"min";
+			} else if (parseFloat(arrApps[i].split(",")[1])==1) {
+				hrs.value = parseFloat(arrApps[i].split(",")[1])+"hour";
+			} else if (parseFloat(arrApps[i].split(",")[1])>1) {
+				hrs.value = parseFloat(arrApps[i].split(",")[1])+"hours";
+			}
 			var cell2 = row.insertCell(1);
 			cell2.appendChild(hrs);
 			
@@ -135,18 +143,18 @@ function persistTable()
 			if (idx>-1) {
 				//App hrs and nbr
 				if (j==2) {
-					if (col.children[0].value!="Quantity") {
+					//if (col.children[0].value!="Quantity") {
 						strPersist += col.children[0].value.replace("min","")+";";
-					}
+					//}
 				}
 				else {
-					if (col.children[0].value!="Hours per Day") {
+					//if (col.children[0].value!="Hours per Day") {
 						if (col.children[0].value.indexOf("min")>-1) {
-							strPersist += parseInt(col.children[0].value.replace("min",""))/60+";";
+							strPersist += parseInt(col.children[0].value.replace("min",""))/60+",";
 						} else {
-							strPersist += col.children[0].value.replace("hour","").replace("s","")+";";
+							strPersist += col.children[0].value.replace("hour","").replace("s","")+",";
 						}
-					}
+					//}
 				}
 				//alert(strPersist);
 			}
@@ -163,7 +171,7 @@ function persistTable()
 	}
 	alert(strPersist);
 	//write to storage
-	/*localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),strPersist);
+	localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),strPersist);
 	//alert(localStorage.getItem(localStorage.CurrentApp.replace(/ /g,'')));
 
 	//make sure to recalculate kWh
@@ -172,7 +180,7 @@ function persistTable()
 	//persist roomlist i.e. if room is not added then add
 	setRoomList();  //this is not the correct place as it increases overhead. need to change this logic at some stage
 
-	setDebug();*/
+	setDebug();
 }
 
 function getkWh()
