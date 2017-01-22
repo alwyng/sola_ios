@@ -82,11 +82,10 @@
 												<input type="text" id="txtName" onChange="persist()">\
 												<h3>Surname</h3>\
 												<input type="text" id="txtSurname" onChange="persist()">\
-												<h3>Email Address</h3>\
-												<input type="text" id="txtEmail" onChange="persist()">\
 											</form>\
 											<br>\
-											<br>\
+                      <h3 style="padding-left:3%;padding-right:3%;text-align: center;">After completing your name and surname continue to the next section in order to complete the usage and number of appliances in each room whilst walking through your home</h3>\
+                      <br>\
 											<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%;; padding-right:10%;">\
 												<a href="data/main.html">\
 													<input type="button" class="button button-fill" onclick="captureEmail()" value="Continue...">\
@@ -102,7 +101,7 @@
 								document.write('<div> &nbsp </div>');
 								document.write('<h3 style="padding-left:2%;">Submit to Solareff</h3>');
 								document.write('<div> &nbsp </div>');
-								
+
 								document.write('<div style="padding-left:4%;"> Rooms captured: '+String(localStorage.roomList)/*.replace(new RegExp(';', 'g'), ', ')*/+'</div>');
 								/*if ("roomList" in localStorage) {
 									alert("11");
@@ -384,7 +383,7 @@
 						navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,destinationType: Camera.DestinationType.DATA_URL });
 						//onPhotoDataSuccess(null);
 						//window.location.href = 'thankyou.html';
-						
+
 					}
 					catch(err) {
 						alert(err.message);
@@ -489,7 +488,7 @@
 					  var thankyou = document.createElement('div');
 					  thankyou.innerHTML = "Thank you for your submission, a consultant will be in touch.";
 					  infoDiv.appendChild(thankyou);
-					  
+
 				}
 				else {
 					ClientDetail = strEmailBody;
