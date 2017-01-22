@@ -71,6 +71,7 @@
 						<a href="http://www.solareff.co.za">
 							<img style='width:100%;height:100%;object-fit: contain;' src="img/logo.jpg">
 						</a>
+						
 						<script>
 							if (!localStorage["isSubmit"]) {
 								localStorage.isSubmit = 0;   //set to 0 if not initialised
@@ -79,17 +80,15 @@
 							{
 								document.write('<form style="padding-left:2%;" name="myform" action="">\
 												<h3>Name</h3>\
-												<input type="text" id="txtName" onChange="persist()">\
+												<input type="text" id="txtName" onChange="persist()" placeholder="Enter to continue...">\
 												<h3>Surname</h3>\
-												<input type="text" id="txtSurname" onChange="persist()">\
-												<h3>Email Address</h3>\
-												<input type="text" id="txtEmail" onChange="persist()">\
+												<input type="text" id="txtSurname" onChange="persist()" placeholder="Enter to continue...">\
 											</form>\
 											<br>\
 											<br>\
-											<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%;; padding-right:10%;">\
-												<a href="data/main.html">\
-													<input type="button" class="button button-fill" onclick="captureEmail()" value="Continue...">\
+											<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%; padding-right:10%;">\
+												<a id="lnkContinue" href="">\
+													<input id="btnContinue" style="background-color: #BABABA;" type="button" class="button button-fill" onclick="captureEmail()" value="Continue...">\
 												</a>\
 											</div>');
 							}

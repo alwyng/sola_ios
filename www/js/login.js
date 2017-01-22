@@ -1,4 +1,4 @@
-function captureEmail()
+/*function captureEmail()
 {
 	//check validity
 	var x = document.forms["myform"]["txtEmail"].value;
@@ -11,13 +11,17 @@ function captureEmail()
 	
 	//store email address
 	persist();
-}
+}*/
 
-function persist() 
+function persist()
 {
 	localStorage.userName = document.getElementById("txtName").value; 
 	localStorage.userSurname = document.getElementById('txtSurname').value;
-	localStorage.userEmail = document.getElementById('txtEmail').value;
+
+	if (document.getElementById("txtName").value!="" && document.getElementById('txtSurname').value!="") {
+		document.getElementById("btnContinue").style.background = "#d2232a";
+		document.getElementById("lnkContinue").href = "data/main.html";
+	}
 }
 
 function populate()
