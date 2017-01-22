@@ -114,8 +114,8 @@
 								document.write('<div style="padding-left:4%;"> Total kWh: '+String(localStorage.kWh)+'</div>');
 								document.write('<div> &nbsp </div>');
 								document.write('</div>');
-                document.write('<h3 style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;">Take photo of electricity bill before submitting via email</h3>');
-								document.write('<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%; padding-right:25%;word-wrap: break-word;">\
+								document.write('<h3 style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;">Take a photo of the electricity bill before submitting information via email</h3>\
+                          <div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%; padding-right:25%;">\
                           <input id="btnPhoto" type="button" class="button button-fill" onclick="capturePhoto()" value="Camera & Email">\
                           </div>');
 								//document.write('<input type="button" class="button button-fill" onclick="androidNoPhoto()" value="Submit...">');
@@ -125,7 +125,8 @@
                         <a href="data/main.html">\
 													<input type="button" class="button button-fill" onclick="resetIndex()" value="Back">\
 												</a>\
-                        </div>');
+                        </div>\
+                        <br>');
 							}
 						</script>
 				    </div>
@@ -487,6 +488,7 @@
 					  var infoDiv = document.getElementById("txtInfo");
 					  var thankyou = document.createElement('div');
 					  thankyou.innerHTML = "Thank you for your submission! The Solareff team thanks you for the time and effort you've made to assist us in creating awareness and promoting conscious use of electricity by using our app. A consultant will be in touch.";
+            thankyou.setAttribute('style','padding-left:3%;padding-right:3%;');
 					  infoDiv.appendChild(thankyou);
 
 				}
