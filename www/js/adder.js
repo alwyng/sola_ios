@@ -69,7 +69,7 @@ function getState()
 			//add the capture boxes
 			var hrs = document.createElement('select');
 			var option;
-			var inputdata = "Hours per Day||5min||10min||15min||20min||30min||45min||1hour||2hours||3hours||4hours||5hours||6hours||7hours||8hours||9hours||10hours||11hours||12hours||13hours||14hours||15hours||16hours||17hours||18hours||19hours||20hours||21hours||22hours||23hours||24hours";
+			var inputdata = "Hours per Day||0 Min||5 Min||10 Min||15 Min||20 Min||30 Min||45 Min||1 Hour||2 Hours||3 Hours||4 Hours||5 Hours||6 Hours||7 Hours||8 Hours||9 Hours||10 Hours||11 Hours||12 Hours||13 Hours||14 Hours||15 Hours||16 Hours||17 Hours||18 Hours||19 Hours||20 Hours||21 Hours||22 Hours||23 Hours||24 Hours";
 			
 			inputdata.split( '||' ).forEach(function( item ) {
 				option = document.createElement( 'option' );
