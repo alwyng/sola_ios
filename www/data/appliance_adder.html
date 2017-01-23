@@ -75,6 +75,9 @@
 											inputdata.split( '||' ).forEach(function( item ) {
 												option = document.createElement( 'option' );
 												option.value = option.textContent = item;
+												if (item=="Hours per Day") {
+													option.disabled = true;
+												}
 												hrs.appendChild( option );
 											});
 											hrs.setAttribute('id','defaulthrs');
@@ -90,6 +93,9 @@
 											inputdata.split( '||' ).forEach(function( item ) {
 												option = document.createElement( 'option' );
 												option.value = option.textContent = item;
+												if (item=="Quantity") {
+													option.disabled = true;
+												}
 												nbr.appendChild( option );
 											});
 											nbr.setAttribute('id','defaultnbr');
