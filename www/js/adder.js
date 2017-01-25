@@ -96,7 +96,7 @@ function getState()
 			
 			var nbr = document.createElement('select');
 			var option;
-			var inputdata = "Quantity||1||2||3||4||5||6||7||8||9||10";
+			var inputdata = "Quantity||0||1||2||3||4||5||6||7||8||9||10";
 
 			inputdata.split( '||' ).forEach(function( item ) {
 				option = document.createElement( 'option' );
@@ -231,7 +231,7 @@ function AddApp()
 	
 	var nbr = document.createElement('select');
 	var option;
-	var inputdata = "Quantity||1||2||3||4||5||6||7||8||9||10";
+	var inputdata = "Quantity||0||1||2||3||4||5||6||7||8||9||10";
 
 	inputdata.split( '||' ).forEach(function( item ) {
 		option = document.createElement( 'option' );
