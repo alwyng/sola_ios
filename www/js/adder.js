@@ -74,6 +74,9 @@ function getState()
 			inputdata.split( '||' ).forEach(function( item ) {
 				option = document.createElement( 'option' );
 				option.value = option.textContent = item;
+				if (item=="Hours per Day") {
+					option.disabled = true;
+				}
 				hrs.appendChild( option );
 			});
 			//hrs.setAttribute('id', i);
@@ -82,11 +85,11 @@ function getState()
 			if (arrApps[i].split(",")[1]=="Hours per Day") {
 				hrs.value = arrApps[i].split(",")[1];
 			} else if (parseFloat(arrApps[i].split(",")[1])<1) {
-				hrs.value = parseFloat(arrApps[i].split(",")[1]*60)+"min";
+				hrs.value = parseFloat(arrApps[i].split(",")[1]*60)+" Min";
 			} else if (parseFloat(arrApps[i].split(",")[1])==1) {
-				hrs.value = parseFloat(arrApps[i].split(",")[1])+"hour";
+				hrs.value = parseFloat(arrApps[i].split(",")[1])+" Hour";
 			} else if (parseFloat(arrApps[i].split(",")[1])>1) {
-				hrs.value = parseFloat(arrApps[i].split(",")[1])+"hours";
+				hrs.value = parseFloat(arrApps[i].split(",")[1])+" Hours";
 			}
 			var cell2 = row.insertCell(1);
 			cell2.appendChild(hrs);
@@ -98,6 +101,9 @@ function getState()
 			inputdata.split( '||' ).forEach(function( item ) {
 				option = document.createElement( 'option' );
 				option.value = option.textContent = item;
+				if (item=="Quantity") {
+					option.disabled = true;
+				}
 				nbr.appendChild( option );
 			});
 			nbr.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
@@ -144,15 +150,15 @@ function persistTable()
 				//App hrs and nbr
 				if (j==2) {
 					//if (col.children[0].value!="Quantity") {
-						strPersist += col.children[0].value.replace("min","")+";";
+						strPersist += col.children[0].value.replace(" Min","")+";";
 					//}
 				}
 				else {
 					//if (col.children[0].value!="Hours per Day") {
-						if (col.children[0].value.indexOf("min")>-1) {
-							strPersist += parseInt(col.children[0].value.replace("min",""))/60+",";
+						if (col.children[0].value.indexOf("Min")>-1) {
+							strPersist += parseInt(col.children[0].value.replace(" Min",""))/60+",";
 						} else {
-							strPersist += col.children[0].value.replace("hour","").replace("s","")+",";
+							strPersist += col.children[0].value.replace(" Hour","").replace("s","")+",";
 						}
 					//}
 				}
@@ -208,11 +214,14 @@ function AddApp()
 	//add the capture boxes
     var hrs = document.createElement('select');
 	var option;
-	var inputdata = "Hours per Day||5min||10min||15min||20min||30min||45min||1hour||2hours||3hours||4hours||5hours||6hours||7hours||8hours||9hours||10hours||11hours||12hours||13hours||14hours||15hours||16hours||17hours||18hours||19hours||20hours||21hours||22hours||23hours||24hours";
+	var inputdata = "Hours per Day||0 Min||5 Min||10 Min||15 Min||20 Min||30 Min||45 Min||1 Hour||2 Hours||3 Hours||4 Hours||5 Hours||6 Hours||7 Hours||8 Hours||9 Hours||10 Hours||11 Hours||12 Hours||13 Hours||14 Hours||15 Hours||16 Hours||17 Hours||18 Hours||19 Hours||20 Hours||21 Hours||22 Hours||23 Hours||24 Hours";
 	
 	inputdata.split( '||' ).forEach(function( item ) {
 		option = document.createElement( 'option' );
 		option.value = option.textContent = item;
+		if (item=="Hours per Day") {
+			option.disabled = true;
+		}
 		hrs.appendChild( option );
 	});
 	hrs.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
@@ -227,6 +236,9 @@ function AddApp()
 	inputdata.split( '||' ).forEach(function( item ) {
 		option = document.createElement( 'option' );
 		option.value = option.textContent = item;
+		if (item=="Quantity") {
+			option.disabled = true;
+		}
 		nbr.appendChild( option );
 	});
     nbr.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
