@@ -21,6 +21,9 @@ function persist()
 	if (document.getElementById("txtName").value!="" && document.getElementById('txtSurname').value!="") {
 		document.getElementById("btnContinue").style.background = "#d2232a";
 		document.getElementById("lnkContinue").href = "data/main.html";
+	} else {
+		document.getElementById("btnContinue").style.background = "#BABABA";
+		document.getElementById("lnkContinue").href = "";
 	}
 }
 
