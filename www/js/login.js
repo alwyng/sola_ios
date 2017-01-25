@@ -28,7 +28,11 @@ function populate()
 {
 	if (localStorage.userName!=null) {document.getElementById('txtName').value=localStorage.userName} else {document.getElementById('txtName').value=''};
 	if (localStorage.userSurname!=null) {document.getElementById('txtSurname').value=localStorage.userSurname} else {document.getElementById('txtSurname').value=''};
-	if (localStorage.userEmail!=null) {document.getElementById('txtEmail').value=localStorage.userEmail} else {document.getElementById('txtEmail').value=''};
+	if (document.getElementById("txtName").value!="" && document.getElementById('txtSurname').value!="") {
+		document.getElementById("btnContinue").style.background = "#d2232a";
+		document.getElementById("lnkContinue").href = "data/main.html";
+	}
+	//if (localStorage.userEmail!=null) {document.getElementById('txtEmail').value=localStorage.userEmail} else {document.getElementById('txtEmail').value=''};
 }
 
 function load()
