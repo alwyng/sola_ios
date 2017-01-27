@@ -149,7 +149,7 @@ function removeApp(app)
 
 function persistTable()
 {
-	//alert('persistTable');
+	alert('persistTable');
 	var table = document.getElementById("tblApp");
 	var strPersist = "";
 	var isEmpty = true;
