@@ -26,7 +26,7 @@ function setDebug()
 	}
 }
 
-function setRoomList(isEmpty=false)
+function setRoomList()
 {
 	alert("setRoomList");
 	/*if (localStorage.getItem("roomList")!=null) {
@@ -205,7 +205,7 @@ function persistTable()
 	recalc();
 
 	//persist roomlist i.e. if room is not added then add
-	setRoomList(isEmpty);  //this is not the correct place as it increases overhead. need to change this logic at some stage
+	setRoomList();  //this is not the correct place as it increases overhead. need to change this logic at some stage
 
 	setDebug();
 }
