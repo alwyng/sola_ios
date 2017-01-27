@@ -1,4 +1,4 @@
-function captureEmail()
+/*function captureEmail()
 {
 	//check validity
 	var x = document.forms["myform"]["txtEmail"].value;
@@ -11,20 +11,31 @@ function captureEmail()
 	
 	//store email address
 	persist();
-}
+}*/
 
-function persist() 
+function persist()
 {
 	localStorage.userName = document.getElementById("txtName").value; 
 	localStorage.userSurname = document.getElementById('txtSurname').value;
-	localStorage.userEmail = document.getElementById('txtEmail').value;
+
+	if (document.getElementById("txtName").value!="" && document.getElementById('txtSurname').value!="") {
+		document.getElementById("btnContinue").style.background = "#d2232a";
+		document.getElementById("lnkContinue").href = "data/main.html";
+	} else {
+		document.getElementById("btnContinue").style.background = "#BABABA";
+		document.getElementById("lnkContinue").href = "";
+	}
 }
 
 function populate()
 {
 	if (localStorage.userName!=null) {document.getElementById('txtName').value=localStorage.userName} else {document.getElementById('txtName').value=''};
 	if (localStorage.userSurname!=null) {document.getElementById('txtSurname').value=localStorage.userSurname} else {document.getElementById('txtSurname').value=''};
-	if (localStorage.userEmail!=null) {document.getElementById('txtEmail').value=localStorage.userEmail} else {document.getElementById('txtEmail').value=''};
+	if (document.getElementById("txtName").value!="" && document.getElementById('txtSurname').value!="") {
+		document.getElementById("btnContinue").style.background = "#d2232a";
+		document.getElementById("lnkContinue").href = "data/main.html";
+	}
+	//if (localStorage.userEmail!=null) {document.getElementById('txtEmail').value=localStorage.userEmail} else {document.getElementById('txtEmail').value=''};
 }
 
 function load()
