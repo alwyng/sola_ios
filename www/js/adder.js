@@ -26,7 +26,7 @@ function setDebug()
 	}
 }
 
-function setRoomList(isEmpty=false)
+/*function setRoomList(isEmpty=false)
 {
 	//alert(isEmpty);
 	if (localStorage.getItem("roomList")!=null) {
@@ -49,7 +49,7 @@ function setRoomList(isEmpty=false)
 		localStorage.setItem("roomList",localStorage.CurrentApp.replace(/ /g,''));
 		//localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),"");
 	}
-}
+}*/
 
 function setEvents()
 {
@@ -206,7 +206,7 @@ function persistTable()
 	recalc();
 
 	//persist roomlist i.e. if room is not added then add
-	setRoomList(isEmpty);  //this is not the correct place as it increases overhead. need to change this logic at some stage
+	//setRoomList(isEmpty);  //this is not the correct place as it increases overhead. need to change this logic at some stage
 
 	setDebug();
 }
