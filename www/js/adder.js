@@ -26,10 +26,10 @@ function setDebug()
 	}
 }
 
-/*function setRoomList(isEmpty=false)
+function setRoomList(isEmpty=false)
 {
-	//alert(isEmpty);
-	if (localStorage.getItem("roomList")!=null) {
+	alert("setRoomList");
+	/*if (localStorage.getItem("roomList")!=null) {
 		var roomList = localStorage.getItem("roomList");
 		var arrRooms = roomList.split(";");
 		if (arrRooms.indexOf(localStorage.CurrentApp.replace(/ /g,'')) < 0 && !isEmpty) {
@@ -48,8 +48,8 @@ function setDebug()
 	} else {
 		localStorage.setItem("roomList",localStorage.CurrentApp.replace(/ /g,''));
 		//localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),"");
-	}
-}*/
+	}*/
+}
 
 function setEvents()
 {
@@ -149,7 +149,6 @@ function removeApp(app)
 
 function persistTable()
 {
-	alert('persistTable');
 	var table = document.getElementById("tblApp");
 	var strPersist = "";
 	var isEmpty = true;
@@ -206,7 +205,7 @@ function persistTable()
 	recalc();
 
 	//persist roomlist i.e. if room is not added then add
-	//setRoomList(isEmpty);  //this is not the correct place as it increases overhead. need to change this logic at some stage
+	setRoomList(isEmpty);  //this is not the correct place as it increases overhead. need to change this logic at some stage
 
 	setDebug();
 }
