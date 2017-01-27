@@ -67,18 +67,50 @@ function getState()
 			var cell1 = row.insertCell(0);
 			cell1.innerHTML = "<div style='width:130px;'>"+arrApps[i].split(",")[0]+"</div>";
 			//add the capture boxes
-			var hrs = document.createElement('input');
-			hrs.setAttribute('type', 'text');
-			hrs.setAttribute('placeholder', 'Hours per Day');
+			var hrs = document.createElement('select');
+			var option;
+			var inputdata = "Hours per Day||0 Min||5 Min||10 Min||15 Min||20 Min||30 Min||45 Min||1 Hour||2 Hours||3 Hours||4 Hours||5 Hours||6 Hours||7 Hours||8 Hours||9 Hours||10 Hours||11 Hours||12 Hours||13 Hours||14 Hours||15 Hours||16 Hours||17 Hours||18 Hours||19 Hours||20 Hours||21 Hours||22 Hours||23 Hours||24 Hours";
+			
+			inputdata.split( '||' ).forEach(function( item ) {
+				option = document.createElement( 'option' );
+				option.value = option.textContent = item;
+				if (item=="Hours per Day") {
+					option.disabled = true;
+					option.selected = true;
+				}
+				hrs.appendChild( option );
+			});
+			//hrs.setAttribute('id', i);
 			hrs.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
+			hrs.setAttribute('class','dropdownstyle button button-fill');
 			hrs.addEventListener('change',persistTable);
-			hrs.value = arrApps[i].split(",")[1];
+			if (arrApps[i].split(",")[1]=="Hours per Day") {
+				hrs.value = arrApps[i].split(",")[1];
+			} else if (parseFloat(arrApps[i].split(",")[1])<1) {
+				hrs.value = parseFloat(arrApps[i].split(",")[1]*60)+" Min";
+			} else if (parseFloat(arrApps[i].split(",")[1])==1) {
+				hrs.value = parseFloat(arrApps[i].split(",")[1])+" Hour";
+			} else if (parseFloat(arrApps[i].split(",")[1])>1) {
+				hrs.value = parseFloat(arrApps[i].split(",")[1])+" Hours";
+			}
 			var cell2 = row.insertCell(1);
 			cell2.appendChild(hrs);
-			var nbr = document.createElement('input');
-			nbr.setAttribute('type', 'text');
-			nbr.setAttribute('placeholder', 'Quantity');
+			
+			var nbr = document.createElement('select');
+			var option;
+			var inputdata = "Quantity||0||1||2||3||4||5||6||7||8||9||10";
+
+			inputdata.split( '||' ).forEach(function( item ) {
+				option = document.createElement( 'option' );
+				option.value = option.textContent = item;
+				if (item=="Quantity") {
+					option.disabled = true;
+					option.selected = true;
+				}
+				nbr.appendChild( option );
+			});
 			nbr.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
+			nbr.setAttribute('class','dropdownstyle button button-fill');
 			nbr.addEventListener('change',persistTable);
 			nbr.value = arrApps[i].split(",")[2];
 			var cell3 = row.insertCell(2);
@@ -116,16 +148,23 @@ function persistTable()
 		for (var j = 0, col; col = row.cells[j]; j++) {
 			var str = col.innerHTML;
 			//alert(str);
-			var idx = str.indexOf('type="text"');
+			var idx = str.indexOf('select');
 			//alert(idx);
 			if (idx>-1) {
 				//App hrs and nbr
 				if (j==2) {
-
-					strPersist += col.children[0].value+";";
+					//if (col.children[0].value!="Quantity") {
+						strPersist += col.children[0].value.replace(" Min","")+";";
+					//}
 				}
 				else {
-					strPersist += col.children[0].value+",";
+					//if (col.children[0].value!="Hours per Day") {
+						if (col.children[0].value.indexOf("Min")>-1) {
+							strPersist += parseInt(col.children[0].value.replace(" Min",""))/60+",";
+						} else {
+							strPersist += col.children[0].value.replace(" Hour","").replace("s","")+",";
+						}
+					//}
 				}
 				//alert(strPersist);
 			}
@@ -177,17 +216,40 @@ function AddApp()
 		cell1.innerHTML = '<input placeholder="Custom Appliance" id="'+uid+'">';
 	}
 	//add the capture boxes
-    var hrs = document.createElement('input');
-    hrs.setAttribute('type', 'text');
-    hrs.setAttribute('placeholder', 'Hours per Day');
+    var hrs = document.createElement('select');
+	var option;
+	var inputdata = "Hours per Day||0 Min||5 Min||10 Min||15 Min||20 Min||30 Min||45 Min||1 Hour||2 Hours||3 Hours||4 Hours||5 Hours||6 Hours||7 Hours||8 Hours||9 Hours||10 Hours||11 Hours||12 Hours||13 Hours||14 Hours||15 Hours||16 Hours||17 Hours||18 Hours||19 Hours||20 Hours||21 Hours||22 Hours||23 Hours||24 Hours";
+	
+	inputdata.split( '||' ).forEach(function( item ) {
+		option = document.createElement( 'option' );
+		option.value = option.textContent = item;
+		if (item=="Hours per Day") {
+			option.disabled = true;
+			option.selected = true;
+		}
+		hrs.appendChild( option );
+	});
 	hrs.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
+	hrs.setAttribute('class','dropdownstyle button button-fill');
 	hrs.addEventListener('change',persistTable);
 	var cell2 = row.insertCell(1);
 	cell2.appendChild(hrs);
-	var nbr = document.createElement('input');
-    nbr.setAttribute('type', 'text');
-    nbr.setAttribute('placeholder', 'Quantity');
+	
+	var nbr = document.createElement('select');
+	var option;
+	var inputdata = "Quantity||0||1||2||3||4||5||6||7||8||9||10";
+
+	inputdata.split( '||' ).forEach(function( item ) {
+		option = document.createElement( 'option' );
+		option.value = option.textContent = item;
+		if (item=="Quantity") {
+			option.disabled = true;
+			option.selected = true;
+		}
+		nbr.appendChild( option );
+	});
     nbr.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
+	nbr.setAttribute('class','dropdownstyle button button-fill');
 	nbr.addEventListener("change",persistTable);
 	var cell3 = row.insertCell(2);
 	cell3.appendChild(nbr);
