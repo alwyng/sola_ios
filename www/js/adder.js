@@ -3,7 +3,9 @@ function load()
 {
 
 	//localStorage.clear();
+	//alert('load');
 	getkWh();   //populate kWh box
+	
 	getState();    //populate previous appliance values
 	setEvents();   //add change events to boxes
 	//setRoomList();  //persist roomlist i.e. if room is not added then add
@@ -24,17 +26,25 @@ function setDebug()
 	}
 }
 
-function setRoomList()
+function setRoomList(isEmpty=false)
 {
+	//alert(isEmpty);
 	if (localStorage.getItem("roomList")!=null) {
 		var roomList = localStorage.getItem("roomList");
 		var arrRooms = roomList.split(";");
-		if (arrRooms.indexOf(localStorage.CurrentApp.replace(/ /g,'')) < 0) {
+		if (arrRooms.indexOf(localStorage.CurrentApp.replace(/ /g,'')) < 0 && !isEmpty) {
 			arrRooms.push(localStorage.CurrentApp.replace(/ /g,''));
 			//localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),"");
+		} else if (isEmpty) {
+			//remove room as it is empty
+			arrRooms.splice(arrRooms.indexOf(localStorage.CurrentApp.replace(/ /g,'')),1);
 		}
 		roomList = arrRooms.join(";");
-		localStorage.setItem("roomList",roomList);
+		if (arrRooms.length>0) {
+			localStorage.setItem("roomList",roomList);
+		} else {
+			localStorage.removeItem("roomList");
+		}
 	} else {
 		localStorage.setItem("roomList",localStorage.CurrentApp.replace(/ /g,''));
 		//localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),"");
@@ -139,9 +149,10 @@ function removeApp(app)
 
 function persistTable()
 {
-	//alert('t');
+	//alert('persistTable');
 	var table = document.getElementById("tblApp");
 	var strPersist = "";
+	var isEmpty = true;
 	//alert(strPersist);
 	for (var i = 0, row; row = table.rows[i]; i++) {
 
@@ -156,6 +167,10 @@ function persistTable()
 					//if (col.children[0].value!="Quantity") {
 						strPersist += col.children[0].value.replace(" Min","")+";";
 					//}
+					if (col.children[0].value!="Quantity" && col.children[0].value!="0") {
+						isEmpty = false;
+						//alert(isEmpty);
+					}
 				}
 				else {
 					//if (col.children[0].value!="Hours per Day") {
@@ -165,6 +180,9 @@ function persistTable()
 							strPersist += col.children[0].value.replace(" Hour","").replace("s","")+",";
 						}
 					//}
+					if (col.children[0].value!="Hours per Day" && col.children[0].value!="0 Min") {
+						isEmpty = false;
+					}
 				}
 				//alert(strPersist);
 			}
@@ -188,7 +206,7 @@ function persistTable()
 	recalc();
 
 	//persist roomlist i.e. if room is not added then add
-	setRoomList();  //this is not the correct place as it increases overhead. need to change this logic at some stage
+	setRoomList(isEmpty);  //this is not the correct place as it increases overhead. need to change this logic at some stage
 
 	setDebug();
 }
