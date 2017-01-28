@@ -27,58 +27,69 @@
     <icon src="www/res/icon/ios/icon-small@2x.png" />
     <!--IOS-->
       <!--iPhone 6 / 6s-->
-      <icon src="www/res/icon/ios/icon-60@3x.png" gap:platform="ios" width="180" height="180" />
+      <icon src="www/res/icon/ios/icon-60@3x.png" platform="ios" width="180" height="180" />
       <!--iPhone / iPod Touch-->
-      <icon src="www/res/icon/ios/icon-60.png" gap:platform="ios" width="60" height="60" />
-      <icon src="www/res/icon/ios/icon-60@2x.png" gap:platform="ios" width="120" height="120" />
+      <icon src="www/res/icon/ios/icon-60.png" platform="ios" width="60" height="60" />
+      <icon src="www/res/icon/ios/icon-60@2x.png" platform="ios" width="120" height="120" />
       <!--iPad-->
-      <icon src="www/res/icon/ios/icon-76.png" gap:platform="ios" width="76" height="76" />
-      <icon src="www/res/icon/ios/icon-76@2x.png" gap:platform="ios" width="152" height="152" />
+      <icon src="www/res/icon/ios/icon-76.png" platform="ios" width="76" height="76" />
+      <icon src="www/res/icon/ios/icon-76@2x.png" platform="ios" width="152" height="152" />
       <!--Settings Icon-->
-      <icon src="www/res/icon/ios/icon-small.png" gap:platform="ios" width="29" height="29" />
-      <icon src="www/res/icon/ios/icon-small@2x.png" gap:platform="ios" width="58" height="58" />
+      <icon src="www/res/icon/ios/icon-small.png" platform="ios" width="29" height="29" />
+      <icon src="www/res/icon/ios/icon-small@2x.png" platform="ios" width="58" height="58" />
       <!--Spotlight Icon-->
-      <icon src="www/res/icon/ios/icon-40.png" gap:platform="ios" width="40" height="40" />
-      <icon src="www/res/icon/ios/icon-40@2x.png" gap:platform="ios" width="80" height="80" />
+      <icon src="www/res/icon/ios/icon-40.png" platform="ios" width="40" height="40" />
+      <icon src="www/res/icon/ios/icon-40@2x.png" platform="ios" width="80" height="80" />
       <!-- Other phones and tablets -->
-      <icon src="www/res/icon/ios/icon.png" gap:platform="ios" width="57" height="57" />
-      <icon src="www/res/icon/ios/icon@2x.png" gap:platform="ios" width="144" height="144" />
-      <icon src="www/res/icon/ios/icon-50.png" gap:platform="ios" width="50" height="50" />
-      <icon src="www/res/icon/ios/icon-50@2x.png" gap:platform="ios" width="100" height="100" />
-      <icon src="www/res/icon/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
-      <icon src="www/res/icon/ios/icon-72@2x.png" gap:platform="ios" width="144" height="144" />
-      <icon src="www/res/icon/ios/icon-small@3x.png" gap:platform="ios" width="87" height="87" />
-      <icon src="www/res/icon/ios/icon-small-40.png" gap:platform="ios" width="40" height="40" />
-      <icon src="www/res/icon/ios/icon-small-40@2x.png" gap:platform="ios" width="80" height="80" />
-      <icon src="www/res/icon/ios/icon-small-40@3x.png" gap:platform="ios" width="120" height="120" />
+      <icon src="www/res/icon/ios/icon.png" platform="ios" width="57" height="57" />
+      <icon src="www/res/icon/ios/icon@2x.png" platform="ios" width="144" height="144" />
+      <icon src="www/res/icon/ios/icon-50.png" platform="ios" width="50" height="50" />
+      <icon src="www/res/icon/ios/icon-50@2x.png" platform="ios" width="100" height="100" />
+      <icon src="www/res/icon/ios/icon-72.png" platform="ios" width="72" height="72" />
+      <icon src="www/res/icon/ios/icon-72@2x.png" platform="ios" width="144" height="144" />
+      <icon src="www/res/icon/ios/icon-small@3x.png" platform="ios" width="87" height="87" />
+      <icon src="www/res/icon/ios/icon-small-40.png" platform="ios" width="40" height="40" />
+      <icon src="www/res/icon/ios/icon-small-40@2x.png" platform="ios" width="80" height="80" />
+      <icon src="www/res/icon/ios/icon-small-40@3x.png" platform="ios" width="120" height="120" />
 
     <!--Android-->
-      <icon src="www/res/icon/android/ldpi.png" gap:platform="android" gap:qualifier="ldpi" />
-      <icon src="www/res/icon/android/mdpi.png" gap:platform="android" gap:qualifier="mdpi" />
-      <icon src="www/res/icon/android/hdpi.png" gap:platform="android" gap:qualifier="hdpi" />
-      <icon src="www/res/icon/android/xhdpi.png" gap:platform="android" gap:qualifier="xhdpi" />
-      <icon src="www/res/icon/android/xxhdpi.png" gap:platform="android" gap:qualifier="xxhdpi" />
-      <icon src="www/res/icon/android/xxxhdpi.png" gap:platform="android" gap:qualifier="xxxhdpi" />
+      <icon src="www/res/icon/android/ldpi.png" platform="android" qualifier="ldpi" />
+      <icon src="www/res/icon/android/mdpi.png" platform="android" qualifier="mdpi" />
+      <icon src="www/res/icon/android/hdpi.png" platform="android" qualifier="hdpi" />
+      <icon src="www/res/icon/android/xhdpi.png" platform="android" qualifier="xhdpi" />
+      <icon src="www/res/icon/android/xxhdpi.png" platform="android" qualifier="xxhdpi" />
+      <icon src="www/res/icon/android/xxxhdpi.png" platform="android" qualifier="xxxhdpi" />
 
     <!--Splash Screens-->
-      <!-- <gap:splash src="splash_path/mdpi.png" /> -->
+      <splash src="splash.png" />
     <!--IOS-->
       <!--iPhone / iPod Touch-->
-      <!-- <gap:splash src="splash_path/Default.png" gap:platform="ios" width="320" height="480" />
-      <gap:splash src="splash_path/Default@2x.png" gap:platform="ios" width="640" height="960" /> -->
+      <splash src="www/res/screen/ios/Default~iphone.png" platform="ios" width="320" height="480" />
+      <splash src="www/res/screen/ios/Default@2x~iphone.png" platform="ios" width="640" height="960" />
       <!--iPhone 5 / iPod Touch (5th Generation)-->
-      <!-- <gap:splash src="splash_path/Default-568h@2x.png" gap:platform="ios" width="640" height="1136" /> -->
+      <splash src="www/res/screen/ios/Default-568h@2x~iphone.png" platform="ios" width="640" height="1136" />
       <!--iPhone 6-->
-      <!-- <gap:splash src="splash_path/Default-667h@2x.png" gap:platform="ios" width="750" height="1334" />
-      <gap:splash src="splash_path/Default-Portrait-736h@2x.png" gap:platform="ios" width="1242" height="2208" /> -->
+      <splash src="www/res/screen/ios/Default-667h.png" platform="ios" width="750" height="1334" />
+      <splash src="www/res/screen/ios/Default-736h.png" platform="ios" width="1242" height="2208" />
       <!--iPad-->
-      <!-- <gap:splash src="splash_path/Default-Portrait.png" gap:platform="ios" width="768" height="1024" />
-      <gap:splash src="splash_path/Default-Portrait@2x.png" gap:platform="ios" width="1536" height="2048" /> -->
+      <splash src="www/res/screen/ios/Default-Portrait~ipad.png" platform="ios" width="768" height="1024" />
+      <splash src="www/res/screen/ios/Default-Portrait@2x~ipad.png" platform="ios" width="1536" height="2048" />
+      <!--Other-->
+      <splash src="www/res/screen/ios/Default-Landscape@2x~ipad.png" platform="ios" width="2048" height="1536" />
+      <splash src="www/res/screen/ios/Default-Landscape~ipad.png" platform="ios" width="1024" height="768" />
+      <splash src="www/res/screen/ios/Default-Landscape-736h.png" platform="ios" width="2208" height="1242" />
     <!--Android-->
-      <!-- <gap:splash src="splash_path/ldpi.png" gap:platform="android" gap:qualifier="ldpi" />
-      <gap:splash src="splash_path/mdpi.png" gap:platform="android" gap:qualifier="mdpi" />
-      <gap:splash src="splash_path/hdpi.png" gap:platform="android" gap:qualifier="hdpi" />
-      <gap:splash src="splash_path/xhdpi.png" gap:platform="android" gap:qualifier="xhdpi" />
-      <gap:splash src="splash_path/xxhdpi.png" gap:platform="android" gap:qualifier="xxhdpi" /> -->
+      <splash src="www/res/screen/android/ldpi-portrait.png" platform="android" qualifier="ldpi" />
+      <splash src="www/res/screen/android/mdpi-portrait.png" platform="android" qualifier="mdpi" />
+      <splash src="www/res/screen/android/hdpi-portrait.png" platform="android" qualifier="hdpi" />
+      <splash src="www/res/screen/android/xhdpi-portrait.png" platform="android" qualifier="xhdpi" />
+      <splash src="www/res/screen/android/xxhdpi-portrait.png" platform="android" qualifier="xxhdpi" />
+      <splash src="www/res/screen/android/xxxhdpi-portrait.png" platform="android" qualifier="xxxhdpi" />
+      <splash src="www/res/screen/android/ldpi-landscape.png" platform="android" qualifier="ldpi" />
+      <splash src="www/res/screen/android/mdpi-landscape.png" platform="android" qualifier="mdpi" />
+      <splash src="www/res/screen/android/hdpi-landscape.png" platform="android" qualifier="hdpi" />
+      <splash src="www/res/screen/android/xhdpi-landscape.png" platform="android" qualifier="xhdpi" />
+      <splash src="www/res/screen/android/xxhdpi-landscape.png" platform="android" qualifier="xxhdpi" />
+      <splash src="www/res/screen/android/xxxhdpi-landscape.png" platform="android" qualifier="xxxhdpi" />
 
 </widget>
