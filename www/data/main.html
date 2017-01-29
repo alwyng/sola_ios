@@ -22,7 +22,7 @@
                   script-src * 'self' 'unsafe-inline' 'unsafe-eval';">
 	</head>
 	<body onload="load()">
-		<div class="statusbar-overlay">    	
+		<div class="statusbar-overlay">
 	    </div>
 	    <div class="views">
 	      <div class="view view-main">
@@ -62,18 +62,18 @@
 						<table id="tblRooms" style="height: 50%; width: 100%; box-sizing: border-box; padding-left:2%;; padding-right:2%;">
 							<!--dynamic rooms go here-->
 						</table>
-						<br>
+						<h3 style="padding-left:2%;padding-right:2%;margin-bottom:1%;">Add a new room</h3>
 						<table align="center">
 							<tr>
 								<td align="center" valign="middle">
-									<input type = 'text' placeholder = 'Your Custom Room' id='txtRoom'>
-									<br>
-									<br>
-									<input type = 'button' class="button button-fill" value = 'Add Room' onClick = "addRoom()">
+									<input type = 'text' placeholder = 'Your custom room' id='txtRoom'>
+								</td>
+								<td align="center" valign="middle">
+									<input type = 'button' class="button button-fill" value = 'Add' onClick = "addRoom()">
 								</td>
 							</tr>
 						</table>
-						<br>
+						<h3 style="padding-left:3%;padding-right:3%;text-align: center;">Once the room by room energy audit of your home is complete click submit</h3>
 						<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%;; padding-right:10%;">
 							<a id='asubmit' href="../index.html" class="button button-fill" onclick="setSubmit()"> Submit </a>
 						</div>

@@ -85,6 +85,7 @@
 												<input type="text" id="txtSurname" onChange="persist()" placeholder="Enter to continue...">\
 											</form>\
 											<br>\
+											<h3 style="padding-left:3%;padding-right:3%;text-align: center;">After completing your name and surname click continue to proceed to the room by room energy audit of your home</h3>\
 											<br>\
 											<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%; padding-right:10%;">\
 												<a id="lnkContinue" href="">\
@@ -101,7 +102,7 @@
 								document.write('<div> &nbsp </div>');
 								document.write('<h3 style="padding-left:2%;">Submit to Solareff</h3>');
 								document.write('<div> &nbsp </div>');
-								
+
 								document.write('<div style="padding-left:4%;"> Rooms captured: '+String(localStorage.roomList)/*.replace(new RegExp(';', 'g'), ', ')*/+'</div>');
 								/*if ("roomList" in localStorage) {
 									alert("11");
@@ -114,18 +115,19 @@
 								document.write('<div style="padding-left:4%;"> Total kWh: '+String(localStorage.kWh)+'</div>');
 								document.write('<div> &nbsp </div>');
 								document.write('</div>');
-
-								document.write('<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%; padding-right:10%;">\
-                          <input id="btnPhoto" type="button" class="button button-fill" onclick="capturePhoto()" value="Take photo and submit information">\
+								document.write('<h3 id="textPhoto" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;">Take a photo of the electricity bill before submitting information via email</h3>\
+                          <div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%; padding-right:25%;">\
+                          <input id="btnPhoto" type="button" class="button button-fill" onclick="capturePhoto()" value="Camera & Email">\
                           </div>');
 								//document.write('<input type="button" class="button button-fill" onclick="androidNoPhoto()" value="Submit...">');
 
 								document.write('<br>');
-								document.write('<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%; padding-right:10%;">\
+								document.write('<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:40%; padding-right:40%;">\
                         <a href="data/main.html">\
 													<input type="button" class="button button-fill" onclick="resetIndex()" value="Back">\
 												</a>\
-                        </div>');
+                        </div>\
+                        <br>');
 							}
 						</script>
 				    </div>
@@ -383,7 +385,7 @@
 						navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,destinationType: Camera.DestinationType.DATA_URL });
 						//onPhotoDataSuccess(null);
 						//window.location.href = 'thankyou.html';
-						
+
 					}
 					catch(err) {
 						alert(err.message);
@@ -483,12 +485,14 @@
 					  }, 0);
 					  //window.location.assign("data/thankyou.html");
 					  //if we move to a new page the async email doesn't fire. rather just edit the current page to say thankyou
-					  document.getElementById("btnPhoto").style.visibility="hidden";
+					  document.getElementById("textPhoto").style.visibility="hidden";
+            document.getElementById("btnPhoto").style.visibility="hidden";
 					  var infoDiv = document.getElementById("txtInfo");
 					  var thankyou = document.createElement('div');
-					  thankyou.innerHTML = "Thank you for your submission, a consultant will be in touch.";
+					  thankyou.innerHTML = "Thank you for your submission! The Solareff team thanks you for the time and effort you've made to assist us in creating awareness and promoting conscious use of electricity by using our app. A consultant will be in touch.";
+            thankyou.setAttribute('style','padding-left:3%;padding-right:3%;text-align: center;');
 					  infoDiv.appendChild(thankyou);
-					  
+
 				}
 				else {
 					ClientDetail = strEmailBody;
