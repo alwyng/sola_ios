@@ -259,4 +259,7 @@ function AddApp()
 	imgDel.addEventListener('click',function(){removeApp(this)});
 	var cell4 = row.insertCell(3);
 	cell4.appendChild(imgDel);
+	
+	//reset dropdown
+	lstItem.selectedIndex = 0;
 }
