@@ -3,7 +3,9 @@ function load()
 {
 
 	//localStorage.clear();
+	//alert('load');
 	getkWh();   //populate kWh box
+	
 	getState();    //populate previous appliance values
 	setEvents();   //add change events to boxes
 	//setRoomList();  //persist roomlist i.e. if room is not added then add
@@ -147,9 +149,9 @@ function removeApp(app)
 
 function persistTable()
 {
-	//alert('t');
 	var table = document.getElementById("tblApp");
 	var strPersist = "";
+	localStorage.isRoomEmpty = "true";
 	//alert(strPersist);
 	for (var i = 0, row; row = table.rows[i]; i++) {
 
@@ -164,6 +166,9 @@ function persistTable()
 					//if (col.children[0].value!="Quantity") {
 						strPersist += col.children[0].value.replace(" Min","")+";";
 					//}
+					if (col.children[0].value!="Quantity" && col.children[0].value!="0") {
+						localStorage.isRoomEmpty = "false";
+					}
 				}
 				else {
 					//if (col.children[0].value!="Hours per Day") {
@@ -173,6 +178,9 @@ function persistTable()
 							strPersist += col.children[0].value.replace(" Hour","").replace("s","")+",";
 						}
 					//}
+					if (col.children[0].value!="Hours per Day" && col.children[0].value!="0 Min") {
+						localStorage.isRoomEmpty = "false";
+					}
 				}
 				//alert(strPersist);
 			}
@@ -196,7 +204,7 @@ function persistTable()
 	recalc();
 
 	//persist roomlist i.e. if room is not added then add
-	setRoomList();  //this is not the correct place as it increases overhead. need to change this logic at some stage
+	setRoomList();  //this is not the correct place as it increases overhead. need to change this logic at some stage. Note: default parameters do NOT work on phonegap
 
 	setDebug();
 }
