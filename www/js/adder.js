@@ -26,15 +26,23 @@ function setDebug()
 
 function setRoomList()
 {
+	//alert("setRoomList");
 	if (localStorage.getItem("roomList")!=null) {
 		var roomList = localStorage.getItem("roomList");
 		var arrRooms = roomList.split(";");
-		if (arrRooms.indexOf(localStorage.CurrentApp.replace(/ /g,'')) < 0) {
+		if (arrRooms.indexOf(localStorage.CurrentApp.replace(/ /g,'')) < 0 && localStorage.isRoomEmpty=="false") {
 			arrRooms.push(localStorage.CurrentApp.replace(/ /g,''));
 			//localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),"");
+		} else if (localStorage.isRoomEmpty=="true") {
+			//remove room as it is empty
+			arrRooms.splice(arrRooms.indexOf(localStorage.CurrentApp.replace(/ /g,'')),1);
 		}
 		roomList = arrRooms.join(";");
-		localStorage.setItem("roomList",roomList);
+		if (arrRooms.length>0) {
+			localStorage.setItem("roomList",roomList);
+		} else {
+			localStorage.removeItem("roomList");
+		}
 	} else {
 		localStorage.setItem("roomList",localStorage.CurrentApp.replace(/ /g,''));
 		//localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),"");
