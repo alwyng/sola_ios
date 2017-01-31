@@ -101,8 +101,13 @@
 								document.write('<div id="txtInfo">');
 								document.write('<div> &nbsp </div>');
 								document.write('<h3 style="padding-left:2%;">Submit to Solareff</h3>');
-								document.write('<div> &nbsp </div>');
+								
+								//warn user if key q's not touched
+								if (localStorage.KeyQuestions==0) {
+									document.write('<h3 style="color:red;padding-left:2%;">You have not made any changes to the key energy questions yet</h3>');
+								}
 
+								document.write('<div> &nbsp </div>');
 								document.write('<div style="padding-left:4%;"> Rooms captured: '+String(localStorage.roomList)/*.replace(new RegExp(';', 'g'), ', ')*/+'</div>');
 								/*if ("roomList" in localStorage) {
 									alert("11");
