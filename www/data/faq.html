@@ -87,6 +87,28 @@
 					              </div>
 					            </div>
 					          </li>
+							  <li class="accordion-item"><a href="#" class="item-link item-content">
+					              <div class="item-inner">
+					                <div class="item-title">I want to start over</div>
+					              </div></a>
+					            <div class="accordion-item-content">
+					              <div class="content-block">
+					                <p>By pressing the button you will erase ALL information captured.</p>
+									<script>
+										function reset()
+										{
+											localStorage.clear();
+											window.location.href = '../index.html';
+										}
+									</script>
+									<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%;; padding-right:10%;">
+										<a id='lnkReset' href="../index.html" class="button button-fill" onclick="reset()"> Reset </a>	
+									</div>
+									<br>
+									<br>
+					              </div>
+					            </div>
+					          </li>
 					        </ul>
 					        </div>
 					      </div>
