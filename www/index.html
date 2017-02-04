@@ -57,11 +57,28 @@
 	      <div class="view view-main">
 	        <div class="navbar">
 	          <div class="navbar-inner">
-	            <div class="left">
-	            </div>
-	            <div class="center sliding">Solareff Mobile</div>
-	            <div class="right">
-	            </div>
+				<script>
+					if (!localStorage["isSubmit"]) {
+						localStorage.isSubmit = 0;   //set to 0 if not initialised
+					};
+					if (localStorage.getItem('isSubmit')==0) {
+						document.write('<div class="left">\
+										</div>\
+										<div class="center sliding">Solareff Mobile</div>\
+										<div class="right">\
+										</div>');
+					} else {
+						document.write('<div class="left sliding"><a href="data/main.html" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>\
+										<div class="center sliding">\
+											Submit\
+										</div>\
+										<div class="right sliding">\
+										</div>');
+										/*<form class="center" name="frmKwh" action="">\
+												<input size="9" class="kwhstyle" type="text" name="txtKwh" disabled>\
+											</form>\*/
+					}
+				</script>
 	          </div>
 	        </div>
 	        <div class="pages navbar-through toolbar-through">
