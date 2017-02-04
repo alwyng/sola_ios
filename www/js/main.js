@@ -7,7 +7,7 @@ function load()
 	//alert(localStorage.getItem(arrRooms));
 	
 	/*Declare global variables*/
-	arrRooms = ["Kitchen","Dining Room","Bedroom 1","Bathroom 1","Bedroom 2","Bathroom 2","Bedroom 3","Bathroom 3","Living Inside","Living Outside","Scullery","Laundry","Garden"];
+	arrRooms = ["Kitchen","Dining Room","Bedroom 1","Bathroom 1","Bedroom 2","Bathroom 2","Bedroom 3","Bathroom 3","Living Inside","Living Outside","Scullery","Laundry","Garden","Office"];
 	if (localStorage.arrRooms==null) {
 		localStorage.arrRooms = arrRooms;
 	}
@@ -55,6 +55,9 @@ function load()
 	localStorage.arrGardenApp = ["Security lights (lights that operate during the night)","Electric Fence","Garage /  gate motors","Swimming pool pump"];
 	localStorage.intGardenDefault = 4;
 	
+	localStorage.arrOfficeApp = ["LED lights","TV","Ceiling Fan","Airconditioner","Flourescent lights","Wi-Fi modem","Radio","Decoders","Game console","Cordless phone"];
+	localStorage.intOfficeDefault = 10;
+	
 	localStorage.arrApplianceList = ["Security lights (lights that operate during the night)","LED lights","Flourescent lights","Electric Fence","Alarm","Wi-Fi modem","Clock radio","Garage /  gate motors","Radio","Laptops","Stand alone personal computer","Fridge freezer combination","Stand alone freezer","TV","Microwave","Washing machine","Tumble Dryer","Dishwasher","Kettle","Hairdryer","Vacuum cleaner","Iron","Heatpump geyser","Standard geyser (not recommended)","Swimming pool pump","Evap Cooler","Stand alone Fridge","Decoders","Oven","Electric Hob","Ceiliing Fan","Game console","Printer","Cordless phone","Airconditioner","Coffee machine","Toaster","Other (Text box to add to existing list)"];
 	localStorage.arrApplianceWattList = ["11","5","56","30","10","50","30","150","200","90","500","250","200","150","900","700","3000","2000","1000","1500","1000","1000","1000","3000","1000","750","180","20","2400","750","25","30","160","2","500","3000","3600"];
 
@@ -100,7 +103,7 @@ function createRooms()
 					btn.innerHTML = "<div style='display: inline-block;width: 95%'> <input type = 'button' class='button button-fill' value = '"+arrStack[0]+"' onClick = 'gotoAdder(this.value)'></div>"; 
 				}
 			
-				if (iBtn>13) {
+				if (iBtn>14) {
 					if (roomList.indexOf(arrStack[0].replace(/ /g,''))>-1) {
 						btn.innerHTML = "<div style='display: inline-block;width: 80%'> <input style='background-color: #4CAF50;' type = 'button' style='vertical-align:bottom' class='button button-fill' value = '"+arrStack[0]+"' onClick = 'gotoAdder(this.value)'></div>"+'<div style="display:inline-block"><img src="../img/delete.gif" style="padding-left:60%;padding-right:40%;vertical-align:bottom" alt="Delete" onclick="removeRoom('+"'"+arrStack[0]+"'"+')"></div>'; 
 					} else {
