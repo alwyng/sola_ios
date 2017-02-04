@@ -1,17 +1,17 @@
 /**
  * Framework7 1.4.2
  * Full Featured Mobile HTML Framework For Building iOS & Android Apps
- * 
+ *
  * iOS Theme
  *
  * http://www.idangero.us/framework7
- * 
+ *
  * Copyright 2016, Vladimir Kharlampidi
  * The iDangero.us
  * http://www.idangero.us/
- * 
+ *
  * Licensed under MIT
- * 
+ *
  * Released on: February 27, 2016
  */
 html,
@@ -3120,8 +3120,8 @@ html:not(.watch-active-state) .button:active,
   color: #fff;
   background: #d2232a;
   border: none;
-/*  height: 100%; 
-  width: 100%; 
+/*  height: 100%;
+  width: 100%;
   box-sizing: border-box;*/
 }
 html:not(.watch-active-state) .button.button-fill:active,
