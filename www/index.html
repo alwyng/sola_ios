@@ -71,7 +71,7 @@
 						<a href="http://www.solareff.co.za">
 							<img style='width:100%;height:100%;object-fit: contain;' src="img/logo.jpg">
 						</a>
-						
+
 						<script>
 							if (!localStorage["isSubmit"]) {
 								localStorage.isSubmit = 0;   //set to 0 if not initialised
@@ -99,11 +99,11 @@
 							if (localStorage.getItem('isSubmit')==1)
 							{
 								document.write('<div id="txtInfo">');
-								document.write('<div> &nbsp </div>');
-								document.write('<h3 style="padding-left:2%;">Submit to Solareff</h3>');
-								document.write('<div> &nbsp </div>');
+								document.write('<br>');
+								document.write('<h3 id="submitPhoto" style="padding-left:2%;">Submit to Solareff</h3>');
+								document.write('<br id="spcSubmit">');
 
-								document.write('<div style="padding-left:4%;"> Rooms captured: '+String(localStorage.roomList)/*.replace(new RegExp(';', 'g'), ', ')*/+'</div>');
+								document.write('<div id="hideRooms" style="padding-left:4%;"> Rooms captured: '+String(localStorage.roomList)/*.replace(new RegExp(';', 'g'), ', ')*/+'</div>');
 								/*if ("roomList" in localStorage) {
 									alert("11");
 									document.write('<div style="padding-left:4%;> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
@@ -111,9 +111,9 @@
 									document.write('<div style="padding-left:4%;> Rooms captured: NO ROOMS CAPTURED YET</div>');
 								}*/
 
-								document.write('<div> &nbsp </div>');
-								document.write('<div style="padding-left:4%;"> Total kWh: '+String(localStorage.kWh)+'</div>');
-								document.write('<div> &nbsp </div>');
+								document.write('<br id="spcRooms">');
+								document.write('<div id="hideKwh" style="padding-left:4%;"> Total kWh: '+String(localStorage.kWh)+'</div>');
+								document.write('<br id="spcKwh">');
 								document.write('</div>');
 								document.write('<h3 id="textPhoto" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;">Take a photo of the electricity bill before submitting information via email</h3>\
                           <div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%; padding-right:25%;">\
@@ -121,7 +121,7 @@
                           </div>');
 								//document.write('<input type="button" class="button button-fill" onclick="androidNoPhoto()" value="Submit...">');
 
-								document.write('<br>');
+								document.write('<br id="spcBr">');
 								document.write('<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:40%; padding-right:40%;">\
                         <a href="data/main.html">\
 													<input type="button" class="button button-fill" onclick="resetIndex()" value="Back">\
@@ -485,13 +485,20 @@
 					  }, 0);
 					  //window.location.assign("data/thankyou.html");
 					  //if we move to a new page the async email doesn't fire. rather just edit the current page to say thankyou
-					  document.getElementById("textPhoto").style.visibility="hidden";
-            document.getElementById("btnPhoto").style.visibility="hidden";
+            document.getElementById("submitPhoto").remove();
+					  document.getElementById("textPhoto").remove();
+            document.getElementById("btnPhoto").remove();
+            document.getElementById("hideRooms").remove();
+            document.getElementById("hideKwh").remove();
+            document.getElementById("spcSubmit").remove();
+            document.getElementById("spcRooms").remove();
+            document.getElementById("spcKwh").remove();
+            document.getElementById("spcBr").remove();
 					  var infoDiv = document.getElementById("txtInfo");
-					  var thankyou = document.createElement('div');
-					  thankyou.innerHTML = "Thank you for your submission! The Solareff team thanks you for the time and effort you've made to assist us in creating awareness and promoting conscious use of electricity by using our app. A consultant will be in touch.";
-            thankyou.setAttribute('style','padding-left:3%;padding-right:3%;text-align: center;');
-					  infoDiv.appendChild(thankyou);
+            var thankyou = document.createElement('h3');
+					  thankyou.innerHTML = "Submitted to Solareff"+"<br/><br/>"+"Thank you for your submission. A consultant will be in touch with you within 24 hours"+"<br/><br/>"+"<span style='font-style: italic;'>"+"&quot;Management of your electricity begins with awareness&quot;"+"</span> ";
+            thankyou.setAttribute('style','padding-left:10%;padding-right:10%;text-align: center;');
+            infoDiv.appendChild(thankyou);
 
 				}
 				else {
