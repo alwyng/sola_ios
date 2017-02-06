@@ -16,48 +16,48 @@ function load()
 	}
 
 	//Room defaults*/
-	localStorage.arrKitchenApp = ["Airconditioner","Ceiling Fan","Coffee machine","Electric Hob","Evap Cooler","Flourescent lights","Fridge freezer combination","Kettle","LED lights","Microwave","Oven","Stand alone freezer","Stand alone Fridge","Toaster"];
+	localStorage.arrKitchenApp = ["Airconditioner","Ceiling Fan","Coffee Machine","Electric Hob","Evap Cooler","Flourescent Lights","Fridge Freezer Combination","Kettle","LED Lights","Microwave","Oven","Stand Alone Freezer","Stand Alone Fridge","Toaster"];
 	localStorage.intKitchenDefault = 14;
 
-	localStorage.arrDiningRoomApp = ["Airconditioner","Ceiling Fan","Flourescent lights","LED lights"];
+	localStorage.arrDiningRoomApp = ["Airconditioner","Ceiling Fan","Flourescent Lights","LED Lights"];
 	localStorage.intDiningRoomDefault = 4;
 
-	localStorage.arrBedroom1App = ["Airconditioner","Ceiling Fan","Clock radio","Flourescent lights","Hairdryer","LED lights"];
+	localStorage.arrBedroom1App = ["Airconditioner","Ceiling Fan","Clock Radio","Flourescent Lights","Hairdryer","LED Lights"];
 	localStorage.intBedroom1Default = 6;
 
-	localStorage.arrBedroom2App = ["Airconditioner","Ceiling Fan","Clock radio","Flourescent lights","Hairdryer","LED lights"];
+	localStorage.arrBedroom2App = ["Airconditioner","Ceiling Fan","Clock Radio","Flourescent Lights","Hairdryer","LED Lights"];
 	localStorage.intBedroom2Default = 6;
 
-	localStorage.arrBedroom3App = ["Airconditioner","Ceiling Fan","Clock radio","Flourescent lights","Hairdryer","LED lights"];
+	localStorage.arrBedroom3App = ["Airconditioner","Ceiling Fan","Clock Radio","Flourescent Lights","Hairdryer","LED Lights"];
 	localStorage.intBedroom3Default = 6;
 
-	localStorage.arrBathroom1App = ["Flourescent lights","LED lights"];
+	localStorage.arrBathroom1App = ["Flourescent Lights","LED Lights"];
 	localStorage.intBathroom1Default = 2;
 
-	localStorage.arrBathroom2App = ["Flourescent lights","LED lights"];
+	localStorage.arrBathroom2App = ["Flourescent Lights","LED Lights"];
 	localStorage.intBathroom2Default = 2;
 
-	localStorage.arrBathroom3App = ["Flourescent lights","LED lights"];
+	localStorage.arrBathroom3App = ["Flourescent Lights","LED Lights"];
 	localStorage.intBathroom3Default = 2;
 
-	localStorage.arrLivingInsideApp = ["Airconditioner","Ceiling Fan","Cordless phone","Decoders","Flourescent lights","Game console","LED lights","Radio","TV","Wi-Fi modem"];
+	localStorage.arrLivingInsideApp = ["Airconditioner","Ceiling Fan","Cordless Phone","Decoders","Flourescent Lights","Game Console","LED Lights","Radio","TV","Wi-Fi Modem"];
 	localStorage.intLivingInsideDefault = 10;
 
-	localStorage.arrLivingOutsideApp = ["Airconditioner","Ceiling Fan","Flourescent lights","LED lights"];
+	localStorage.arrLivingOutsideApp = ["Airconditioner","Ceiling Fan","Flourescent Lights","LED Lights"];
 	localStorage.intLivingOutsideDefault = 4;
 
-	localStorage.arrSculleryApp = ["Airconditioner","Ceiling Fan","Dishwasher","Flourescent lights","LED lights","Vacuum cleaner"];
+	localStorage.arrSculleryApp = ["Airconditioner","Ceiling Fan","Dishwasher","Flourescent Lights","LED Lights","Vacuum Cleaner"];
 	localStorage.intSculleryDefault = 6;
 
-	localStorage.arrLaundryApp = ["Airconditioner","Ceiling Fan","Flourescent lights","Iron","LED lights","Tumble Dryer","Washing machine"];
+	localStorage.arrLaundryApp = ["Airconditioner","Ceiling Fan","Flourescent Lights","Iron","LED Lights","Tumble Dryer","Washing Machine"];
 	localStorage.intLaundryDefault = 7;
 
-	localStorage.arrGardenApp = ["Electric Fence","Garage /  gate motors","Security lights (lights that operate during the night)","Swimming pool pump"];
+	localStorage.arrGardenApp = ["Electric Fence","Garage /  Gate Motors","Security Lights (Which operate during the night)","Swimming Pool Pump"];
 	localStorage.intGardenDefault = 4;
 
-	// localStorage.arrApplianceList = ["Security lights (lights that operate during the night)","LED lights","Flourescent lights","Electric Fence","Alarm","Wi-Fi modem","Clock radio","Garage /  gate motors","Radio","Laptops","Stand alone personal computer","Fridge freezer combination","Stand alone freezer","TV","Microwave","Washing machine","Tumble Dryer","Dishwasher","Kettle","Hairdryer","Vacuum cleaner","Iron","Heatpump geyser","Standard geyser (not recommended)","Swimming pool pump","Evap Cooler","Stand alone Fridge","Decoders","Oven","Electric Hob","Ceiliing Fan","Game console","Printer","Cordless phone","Airconditioner","Coffee machine","Toaster","Other (Text box to add to existing list)"];
+	// localStorage.arrApplianceList = ["Security Lights (Which operate during the night)","LED Lights","Flourescent Lights","Electric Fence","Alarm","Wi-Fi Modem","Clock Radio","Garage /  Gate Motors","Radio","Laptops","Stand Alone Personal Computer","Fridge Freezer Combination","Stand Alone Freezer","TV","Microwave","Washing Machine","Tumble Dryer","Dishwasher","Kettle","Hairdryer","Vacuum Cleaner","Iron","Heatpump Geyser","Standard Geyser (Not recommended)","Swimming Pool Pump","Evap Cooler","Stand Alone Fridge","Decoders","Oven","Electric Hob","Ceiliing Fan","Game Console","Printer","Cordless Phone","Airconditioner","Coffee Machine","Toaster","Other (Text box to add to existing list)"];
 	// localStorage.arrApplianceWattList = ["11","5","56","30","10","50","30","150","200","90","500","250","200","150","900","700","3000","2000","1000","1500","1000","1000","1000","3000","1000","750","180","20","2400","750","25","30","160","2","500","3000","3600"];
-	localStorage.arrApplianceList = ["Airconditioner","Alarm","Ceiliing Fan","Clock radio","Coffee machine","Cordless phone","Decoders","Dishwasher","Electric Fence","Electric Hob","Evap Cooler","Flourescent lights","Fridge freezer combination","Game console","Garage /  gate motors","Hairdryer","Heatpump geyser","Iron","Kettle","Laptops","LED lights","Microwave","Oven","Printer","Radio","Security lights (lights that operate during the night)","Stand alone freezer","Stand alone Fridge","Stand alone personal computer","Standard geyser (not recommended)","Swimming pool pump","Toaster","Tumble Dryer","TV","Vacuum cleaner","Washing machine","Wi-Fi modem","Other (Text box to add to existing list)"];
+	localStorage.arrApplianceList = ["Airconditioner","Alarm","Ceiliing Fan","Clock Radio","Coffee Machine","Cordless Phone","Decoders","Dishwasher","Electric Fence","Electric Hob","Evap Cooler","Flourescent Lights","Fridge Freezer Combination","Game Console","Garage /  Gate Motors","Hairdryer","Heatpump Geyser","Iron","Kettle","Laptops","LED Lights","Microwave","Oven","Printer","Radio","Security Lights (Which operate during the night)","Stand Alone Freezer","Stand Alone Fridge","Stand Alone Personal Computer","Standard Geyser (Not recommended)","Swimming Pool Pump","Toaster","Tumble Dryer","TV","Vacuum Cleaner","Washing Machine","Wi-Fi Modem","Other (Text box to add to existing list)"];
 	localStorage.arrApplianceWattList = ["500","10","25","30","3000","2","20","2000","30","750","750","56","250","30","150","1500","1000","1000","1000","90","5","900","2400","160","200","11","200","180","500","3000","1000","3600","3000","150","1000","700","50"];
 
 	/*------------------------*/
