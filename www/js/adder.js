@@ -281,5 +281,6 @@ function AddApp()
 		lstItem.selectedIndex = 0;
 	}
 	//lstItem.value = "Choose an appliance to add to the list";
+	persistTable();
 	location.reload();
 }
