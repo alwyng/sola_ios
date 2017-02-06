@@ -8,14 +8,14 @@
         alert("Not a valid e-mail address");
         return false;
     }
-	
+
 	//store email address
 	persist();
 }*/
 
 function persist()
 {
-	localStorage.userName = document.getElementById("txtName").value; 
+	localStorage.userName = document.getElementById("txtName").value;
 	localStorage.userSurname = document.getElementById('txtSurname').value;
 
 	if (document.getElementById("txtName").value!="" && document.getElementById('txtSurname').value!="") {
@@ -44,7 +44,7 @@ function load()
 	if (!localStorage["isSubmit"]) {
 		localStorage.isSubmit = 0;   //set to 0 if not initialised
 	}
-	
+
 	populate();
 	//recalc();
 	//section();
@@ -67,14 +67,14 @@ function section() {
 	if (localStorage.getItem('isSubmit')==1) {
 		div = document.getElementById('submit');
 		div.style.display = 'block';
-		
+
 		div = document.getElementById('login');
 		div.style.display = 'none';
-	} else 
+	} else
 	if (localStorage.getItem('isSubmit')==0/* or localStorage.getItem('isSubmit')==null*/) {
 		div = document.getElementById('submit');
 		div.style.display = 'none';
-		
+
 		div = document.getElementById('login');
 		div.style.display = 'block';
 	}
