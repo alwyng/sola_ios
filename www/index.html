@@ -102,8 +102,19 @@
 								document.write('<br>');
 								document.write('<h3 id="submitPhoto" style="padding-left:2%;">Submit to Solareff</h3>');
 								document.write('<br id="spcSubmit">');
+								
+								//This is a hack, need to find better way
+								strRooms = String(localStorage.roomList).replace("Bathroom1","Bathroom 1");
+								strRooms = strRooms.replace("Bathroom2","Bathroom 2");
+								strRooms = strRooms.replace("Bathroom3","Bathroom 3");
+								strRooms = strRooms.replace("Bedroom1","Bedroom 1");
+								strRooms = strRooms.replace("Bedroom2","Bedroom 2");
+								strRooms = strRooms.replace("Bedroom3","Bedroom 3");
+								strRooms = strRooms.replace("LivingInside","Living Inside");
+								strRooms = strRooms.replace("LivingOutside","Living Outside");
+								strRooms = strRooms.replace("DiningRoom","Dining Room");
 
-								document.write('<div><h3 id="hideRooms" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;"> Rooms captured: '+String(localStorage.roomList).replace(new RegExp(';', 'g'), ', ')+'</h3></div>');
+								document.write('<div><h3 id="hideRooms" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;"> Rooms captured: '+strRooms.replace(new RegExp(';', 'g'), ', ')+'</h3></div>');
 								/*if ("roomList" in localStorage) {
 									alert("11");
 									document.write('<div style="padding-left:4%;> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
