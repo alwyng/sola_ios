@@ -278,9 +278,7 @@ function AddApp()
 		cell4.appendChild(imgDel);
 		
 		//reset dropdown
-		//lstItem.selectedIndex = 0;
-		
-		
+		lstItem.selectedIndex = 1;
 	}
-	lstItem.value = "Choose an appliance to add to the list";
+	//lstItem.value = "Choose an appliance to add to the list";
 }
