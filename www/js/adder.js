@@ -279,7 +279,8 @@ function AddApp()
 		
 		//reset dropdown
 		//lstItem.selectedIndex = 0;
-		lstItem.value = "Choose an appliance to add to the list";
-		alert("reset");
+		
+		
 	}
+	lstItem.value = "Choose an appliance to add to the list";
 }
