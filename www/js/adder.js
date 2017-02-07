@@ -37,7 +37,9 @@ function setRoomList()
 			//localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),"");
 		} else if (localStorage.isRoomEmpty=="true") {
 			//remove room as it is empty
-			arrRooms.splice(arrRooms.indexOf(localStorage.CurrentApp.replace(/ /g,'')),1);
+			if (arrRooms.indexOf(localStorage.CurrentApp.replace(/ /g,''))!=-1) {
+				arrRooms.splice(arrRooms.indexOf(localStorage.CurrentApp.replace(/ /g,'')),1);
+			}
 		}
 		roomList = arrRooms.join(";");
 		if (arrRooms.length>0) {
@@ -46,7 +48,10 @@ function setRoomList()
 			localStorage.removeItem("roomList");
 		}
 	} else {
-		localStorage.setItem("roomList",localStorage.CurrentApp.replace(/ /g,''));
+		if (localStorage.isRoomEmpty=="false") {
+			localStorage.setItem("roomList",localStorage.CurrentApp.replace(/ /g,''));
+		}
+		
 		//localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),"");
 	}
 }
