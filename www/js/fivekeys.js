@@ -11,6 +11,9 @@ function persist()
 	localStorage.IsBlanket = document.getElementById('selIsBlanket').value;
 	localStorage.StoveType = document.getElementById('selStoveType').value;
 	localStorage.OvenType = document.getElementById('selOvenType').value;
+	
+	//flag as "touched"
+	localStorage.KeyQuestions = 1;
 }
 
 function load()

@@ -53,8 +53,15 @@
 						</form>-->
 						<br>
 						<br>
-						<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%;; padding-right:10%;">
-							<a href="fivekeys.html" class="button button-fill">Key Energy Questions
+						<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%; padding-right:10%;">
+							<script>
+								if (localStorage.KeyQuestions==1) {
+									document.write('<a style="background-color: #4CAF50;" href="fivekeys.html" class="button button-fill">Key Energy Questions');
+								} else {
+									document.write('<a href="fivekeys.html" class="button button-fill">Key Energy Questions');
+								}
+								
+							</script>
 						</a>
 						</div>
 						<br>

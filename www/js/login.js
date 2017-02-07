@@ -45,6 +45,10 @@ function load()
 		localStorage.isSubmit = 0;   //set to 0 if not initialised
 	}
 	
+	if (!localStorage["KeyQuestions"]) {
+		localStorage.KeyQuestions = 0;
+	}
+	
 	populate();
 	//recalc();
 	//section();

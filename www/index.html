@@ -101,24 +101,38 @@
 								document.write('<div id="txtInfo">');
 								document.write('<div> &nbsp </div>');
 								document.write('<h3 style="padding-left:2%;">Submit to Solareff</h3>');
-								document.write('<div> &nbsp </div>');
+								
+								//warn user if key q's not touched
+								if (localStorage.KeyQuestions==0) {
+									document.write('<h3 align="center" style="color:red;padding-left:2%;">You have not made any changes to the key energy questions yet</h3>');
+								}
 
-								document.write('<div style="padding-left:4%;"> Rooms captured: '+String(localStorage.roomList)/*.replace(new RegExp(';', 'g'), ', ')*/+'</div>');
-								/*if ("roomList" in localStorage) {
-									alert("11");
-									document.write('<div style="padding-left:4%;> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
+								document.write('<div> &nbsp </div>');
+								if (localStorage["roomList"] && localStorage.roomList!='') {
+									document.write('<div style="padding-left:4%;"> Rooms captured: '+String(localStorage.roomList)/*.replace(new RegExp(';', 'g'), ', ')*/+'</div>');
+									document.write('<div> &nbsp </div>');
+									document.write('<div style="padding-left:4%;"> Total kWh: '+String(localStorage.kWh)+'</div>');
 								} else {
-									document.write('<div style="padding-left:4%;> Rooms captured: NO ROOMS CAPTURED YET</div>');
-								}*/
-
-								document.write('<div> &nbsp </div>');
-								document.write('<div style="padding-left:4%;"> Total kWh: '+String(localStorage.kWh)+'</div>');
+									document.write('<h3 align="center" style="color:red;padding-left:2%;">You have not captured any room information yet</h3>');
+								}
+								
 								document.write('<div> &nbsp </div>');
 								document.write('</div>');
-								document.write('<h3 id="textPhoto" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;">Take a photo of the electricity bill before submitting information via email</h3>\
-                          <div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%; padding-right:25%;">\
-                          <input id="btnPhoto" type="button" class="button button-fill" onclick="capturePhoto()" value="Camera & Email">\
-                          </div>');
+								
+								//disable button if no information captured
+								if (localStorage.KeyQuestions==0 || !localStorage["roomList"] || localStorage.roomList=='') {
+									document.write('<h3 id="textPhoto" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;">Take a photo of the electricity bill before submitting information via email</h3>\
+													  <div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%; padding-right:25%;">\
+													  <input id="btnPhoto" disabled="true" type="button" class="button button-fill" onclick="capturePhoto()" value="Camera & Email">\
+													  </div>');
+								} else
+								{
+									document.write('<h3 id="textPhoto" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;">Take a photo of the electricity bill before submitting information via email</h3>\
+													  <div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%; padding-right:25%;">\
+													  <input id="btnPhoto" type="button" class="button button-fill" onclick="capturePhoto()" value="Camera & Email">\
+													  </div>');
+								}
+													  
 								//document.write('<input type="button" class="button button-fill" onclick="androidNoPhoto()" value="Submit...">');
 
 								document.write('<br>');
