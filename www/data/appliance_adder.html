@@ -122,7 +122,7 @@
 								//var intDfltApps = localStorage.getItem('int'+localStorage.CurrentApp.replace(/ /g,'')+'Default').split(',');
 								var intSelectSize = arrApps.length;
 
-								document.write('<select id="lstAppPicker" class="dropdownstyle button button-fill" style="width: 20em;text-align-last:center;" size="'+intSelectSize+'"><option selected disabled>Choose an appliance to add to the list</option>');//'+arrApps.length-intDfltApps+'">');
+								document.write('<select onchange="AddApp()" id="lstAppPicker" class="dropdownstyle button button-fill" style="width: 20em;text-align-last:center;" size="'+intSelectSize+'"><option selected disabled>Choose an appliance to add to the list</option>');//'+arrApps.length-intDfltApps+'">');
 								for (var i=0;i<arrApps.length;i++) {
 									document.write('<option>'+arrApps[i]+'</option>');
 								}
@@ -132,9 +132,9 @@
 						</div>
 						<br>
 
-						<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%;; padding-right:25%;">
+						<!--<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%;; padding-right:25%;">
 							<input type="button" class="button button-fill" name="btnAdd" value="Add appliance" onclick="AddApp()">
-						</div>
+						</div>-->
 						<br>
 						<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:30%;; padding-right:30%;">
 							<a href="javascript:history.back()" class="button button-fill">Done</a>

@@ -37,7 +37,9 @@ function setRoomList()
 			//localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),"");
 		} else if (localStorage.isRoomEmpty=="true") {
 			//remove room as it is empty
-			arrRooms.splice(arrRooms.indexOf(localStorage.CurrentApp.replace(/ /g,'')),1);
+			if (arrRooms.indexOf(localStorage.CurrentApp.replace(/ /g,''))!=-1) {
+				arrRooms.splice(arrRooms.indexOf(localStorage.CurrentApp.replace(/ /g,'')),1);
+			}
 		}
 		roomList = arrRooms.join(";");
 		if (arrRooms.length>0) {
@@ -46,7 +48,10 @@ function setRoomList()
 			localStorage.removeItem("roomList");
 		}
 	} else {
-		localStorage.setItem("roomList",localStorage.CurrentApp.replace(/ /g,''));
+		if (localStorage.isRoomEmpty=="false") {
+			localStorage.setItem("roomList",localStorage.CurrentApp.replace(/ /g,''));
+		}
+		
 		//localStorage.setItem(localStorage.CurrentApp.replace(/ /g,''),"");
 	}
 }
@@ -220,62 +225,67 @@ function AddApp()
 	var lstItem = document.getElementById("lstAppPicker");
 	var txtAddApp = lstItem.options[lstItem.selectedIndex].text;
 
-	//update table
-	var table = document.getElementById("tblApp");
-	var row = table.insertRow(table.rows.length);
-	//add the selected appliance
-	var cell1 = row.insertCell(0);
-	if (txtAddApp!='Other (Text box to add to existing list)') {
-		cell1.innerHTML = "<div style='width:130px;'>"+txtAddApp+"</div>";
-	} else {
-		var uid = ("0000" + (Math.random()*Math.pow(36,4) << 0).toString(36)).slice(-4);
-		cell1.innerHTML = '<input placeholder="Custom Appliance" id="'+uid+'">';
-	}
-	//add the capture boxes
-    var hrs = document.createElement('select');
-	var option;
-	var inputdata = "Hours per Day||0 Min||5 Min||10 Min||15 Min||20 Min||30 Min||45 Min||1 Hour||2 Hours||3 Hours||4 Hours||5 Hours||6 Hours||7 Hours||8 Hours||9 Hours||10 Hours||11 Hours||12 Hours||13 Hours||14 Hours||15 Hours||16 Hours||17 Hours||18 Hours||19 Hours||20 Hours||21 Hours||22 Hours||23 Hours||24 Hours";
-	
-	inputdata.split( '||' ).forEach(function( item ) {
-		option = document.createElement( 'option' );
-		option.value = option.textContent = item;
-		if (item=="Hours per Day") {
-			option.disabled = true;
-			option.selected = true;
+	if (txtAddApp!="Choose an appliance to add to the list") {
+		//update table
+		var table = document.getElementById("tblApp");
+		var row = table.insertRow(table.rows.length);
+		//add the selected appliance
+		var cell1 = row.insertCell(0);
+		if (txtAddApp!='Other (Text box to add to existing list)') {
+			cell1.innerHTML = "<div style='width:130px;'>"+txtAddApp+"</div>";
+		} else {
+			var uid = ("0000" + (Math.random()*Math.pow(36,4) << 0).toString(36)).slice(-4);
+			cell1.innerHTML = '<input placeholder="Custom Appliance" id="'+uid+'">';
 		}
-		hrs.appendChild( option );
-	});
-	hrs.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
-	hrs.setAttribute('class','dropdownstyle button button-fill');
-	hrs.addEventListener('change',persistTable);
-	var cell2 = row.insertCell(1);
-	cell2.appendChild(hrs);
-	
-	var nbr = document.createElement('select');
-	var option;
-	var inputdata = "Quantity||0||1||2||3||4||5||6||7||8||9||10";
+		//add the capture boxes
+		var hrs = document.createElement('select');
+		var option;
+		var inputdata = "Hours per Day||0 Min||5 Min||10 Min||15 Min||20 Min||30 Min||45 Min||1 Hour||2 Hours||3 Hours||4 Hours||5 Hours||6 Hours||7 Hours||8 Hours||9 Hours||10 Hours||11 Hours||12 Hours||13 Hours||14 Hours||15 Hours||16 Hours||17 Hours||18 Hours||19 Hours||20 Hours||21 Hours||22 Hours||23 Hours||24 Hours";
+		
+		inputdata.split( '||' ).forEach(function( item ) {
+			option = document.createElement( 'option' );
+			option.value = option.textContent = item;
+			if (item=="Hours per Day") {
+				option.disabled = true;
+				option.selected = true;
+			}
+			hrs.appendChild( option );
+		});
+		hrs.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
+		hrs.setAttribute('class','dropdownstyle button button-fill');
+		hrs.addEventListener('change',persistTable);
+		var cell2 = row.insertCell(1);
+		cell2.appendChild(hrs);
+		
+		var nbr = document.createElement('select');
+		var option;
+		var inputdata = "Quantity||0||1||2||3||4||5||6||7||8||9||10";
 
-	inputdata.split( '||' ).forEach(function( item ) {
-		option = document.createElement( 'option' );
-		option.value = option.textContent = item;
-		if (item=="Quantity") {
-			option.disabled = true;
-			option.selected = true;
-		}
-		nbr.appendChild( option );
-	});
-    nbr.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
-	nbr.setAttribute('class','dropdownstyle button button-fill');
-	nbr.addEventListener("change",persistTable);
-	var cell3 = row.insertCell(2);
-	cell3.appendChild(nbr);
-	var imgDel = document.createElement('img');
-	//delete row button
-	imgDel.src = "../img/delete.gif";
-	imgDel.addEventListener('click',function(){removeApp(this)});
-	var cell4 = row.insertCell(3);
-	cell4.appendChild(imgDel);
-	
-	//reset dropdown
-	lstItem.selectedIndex = 0;
+		inputdata.split( '||' ).forEach(function( item ) {
+			option = document.createElement( 'option' );
+			option.value = option.textContent = item;
+			if (item=="Quantity") {
+				option.disabled = true;
+				option.selected = true;
+			}
+			nbr.appendChild( option );
+		});
+		nbr.setAttribute('style','height: 100%; width: 100%; box-sizing: border-box');
+		nbr.setAttribute('class','dropdownstyle button button-fill');
+		nbr.addEventListener("change",persistTable);
+		var cell3 = row.insertCell(2);
+		cell3.appendChild(nbr);
+		var imgDel = document.createElement('img');
+		//delete row button
+		imgDel.src = "../img/delete.gif";
+		imgDel.addEventListener('click',function(){removeApp(this)});
+		var cell4 = row.insertCell(3);
+		cell4.appendChild(imgDel);
+		
+		//reset dropdown
+		lstItem.selectedIndex = 0;
+	}
+	//lstItem.value = "Choose an appliance to add to the list";
+	persistTable();
+	location.reload();
 }
