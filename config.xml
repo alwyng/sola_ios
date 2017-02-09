@@ -67,7 +67,8 @@
     <splash platform="android" qualifier="xhdpi" src="www/res/screen/android/xhdpi-landscape.png" />
     <splash platform="android" qualifier="xxhdpi" src="www/res/screen/android/xxhdpi-landscape.png" />
     <splash platform="android" qualifier="xxxhdpi" src="www/res/screen/android/xxxhdpi-landscape.png" />
-    <plugin name="cordova-plugin-camera" spec="~2.3.1" />
-		<variable name="CAMERA_USAGE_DESCRIPTION" value="Electricity Bill Photo" />
-	</plugin>
+    <plugin name="cordova-plugin-camera" spec="~2.3.1">
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="Electricity Bill Photo" />
+    </plugin>
+    <engine name="ios" spec="~4.3.1" />
 </widget>
