@@ -70,9 +70,7 @@
 					} else {
 						document.write('<div class="left sliding"><a href="data/main.html" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>\
 										<div class="center sliding">\
-											Submit\
-										</div>\
-										<div class="right sliding">\
+											Submit Information\
 										</div>');
 										/*<form class="center" name="frmKwh" action="">\
 												<input size="9" class="kwhstyle" type="text" name="txtKwh" disabled>\
@@ -119,12 +117,12 @@
 								document.write('<br>');
 								document.write('<h3 id="submitPhoto" style="padding-left:2%;">Submit to Solareff</h3>');
 								document.write('<br id="spcSubmit">');
-								
+
 								//warn user if key q's not touched
 								if (localStorage.KeyQuestions==0) {
 									document.write('<h3 align="center" style="color:red;padding-left:2%;">You have not made any changes to the key energy questions yet</h3>');
 								}
-								
+
 								//This is a hack, need to find better way
 								strRooms = String(localStorage.roomList).replace("Bathroom1","Bathroom 1");
 								strRooms = strRooms.replace("Bathroom2","Bathroom 2");
@@ -141,14 +139,14 @@
 									document.write('<div><h3 id="hideRooms" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;"> Rooms captured: '+strRooms.replace(new RegExp(';', 'g'), ', ')+'</h3></div>');
 									document.write('<br id="spcRooms">');
 									document.write('<div><h3 id="hideKwh" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;"> Total kWh: '+String(localStorage.kWh)+'</h3></div>');
-									
+
 								} else {
 									document.write('<h3 align="center" style="color:red;padding-left:2%;">You have not captured any room information yet</h3>');
 								}
-								
+
 								document.write('<br id="spcKwh">');
 								document.write('</div>');
-								
+
 								//disable button if no information captured
 								if (localStorage.KeyQuestions==0 || !localStorage["roomList"] || localStorage.roomList=='') {
 									document.write('<h3 id="textPhoto" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;">Take a photo of the electricity bill before submitting information via email</h3>\
@@ -162,7 +160,7 @@
 													  <input id="btnPhoto" type="button" class="button button-fill" onclick="capturePhoto()" value="Camera & Email">\
 													  </div>');
 								}
-													  
+
 								//document.write('<input type="button" class="button button-fill" onclick="androidNoPhoto()" value="Submit...">');
 
 								document.write('<br id="spcBr">');
