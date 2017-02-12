@@ -55,3 +55,12 @@ form.center {
   color: #6d6d72;
   box-sizing: border-box;
 }
+
+.page-content-kwh {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  height: 80%;
+  position: relative;
+  z-index: 1;
+}
