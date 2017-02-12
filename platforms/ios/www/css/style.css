@@ -48,3 +48,10 @@ form.center {
 .spacer {
 	background: #f7f7f8;
 }
+
+.content-block-address {
+  margin: 5px 0;
+  padding: 0 15px;
+  color: #6d6d72;
+  box-sizing: border-box;
+}

@@ -6,11 +6,14 @@ function persist()
 	localStorage.QtyElecGeyser = document.getElementById('txtQtyElecGeyser').value;
 	localStorage.SizeGasGeyser = document.getElementById('txtSizeGasGeyser').value;
 	localStorage.QtyGasGeyser = document.getElementById('txtQtyGasGeyser').value;
-	localStorage.selIsTimer = document.getElementById('selIsTimer').value;
+	localStorage.IsTimer = document.getElementById('selIsTimer').value;
 	localStorage.IsHeatPump = document.getElementById('selIsHeatPump').value;
 	localStorage.IsBlanket = document.getElementById('selIsBlanket').value;
 	localStorage.StoveType = document.getElementById('selStoveType').value;
 	localStorage.OvenType = document.getElementById('selOvenType').value;
+	
+	//flag as "touched"
+	localStorage.KeyQuestions = 1;
 }
 
 function load()

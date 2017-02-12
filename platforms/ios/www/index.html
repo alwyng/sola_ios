@@ -28,7 +28,8 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 		<!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-		<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+		<!--<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap://ready file://* *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
 		<!-- Good default declaration:
 		* gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
 		* https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
@@ -56,11 +57,28 @@
 	      <div class="view view-main">
 	        <div class="navbar">
 	          <div class="navbar-inner">
-	            <div class="left">
-	            </div>
-	            <div class="center sliding">Solareff Mobile</div>
-	            <div class="right">
-	            </div>
+				<script>
+					if (!localStorage["isSubmit"]) {
+						localStorage.isSubmit = 0;   //set to 0 if not initialised
+					};
+					if (localStorage.getItem('isSubmit')==0) {
+						document.write('<div class="left">\
+										</div>\
+										<div class="center sliding">Solareff Mobile</div>\
+										<div class="right">\
+										</div>');
+					} else {
+						document.write('<div class="left sliding"><a href="data/main.html" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>\
+										<div class="center sliding">\
+											Submit\
+										</div>\
+										<div class="right sliding">\
+										</div>');
+										/*<form class="center" name="frmKwh" action="">\
+												<input size="9" class="kwhstyle" type="text" name="txtKwh" disabled>\
+											</form>\*/
+					}
+				</script>
 	          </div>
 	        </div>
 	        <div class="pages navbar-through toolbar-through">
@@ -70,6 +88,7 @@
 						<a href="http://www.solareff.co.za">
 							<img style='width:100%;height:100%;object-fit: contain;' src="img/logo.jpg">
 						</a>
+
 						<script>
 							if (!localStorage["isSubmit"]) {
 								localStorage.isSubmit = 0;   //set to 0 if not initialised
@@ -78,17 +97,16 @@
 							{
 								document.write('<form style="padding-left:2%;" name="myform" action="">\
 												<h3>Name</h3>\
-												<input type="text" id="txtName" onChange="persist()">\
+												<input type="text" id="txtName" onChange="persist()" placeholder="Enter to continue...">\
 												<h3>Surname</h3>\
-												<input type="text" id="txtSurname" onChange="persist()">\
-												<h3>Email Address</h3>\
-												<input type="text" id="txtEmail" onChange="persist()">\
+												<input type="text" id="txtSurname" onChange="persist()" placeholder="Enter to continue...">\
 											</form>\
 											<br>\
+											<h3 style="padding-left:3%;padding-right:3%;text-align: center;">After completing your name and surname click continue to proceed to the room by room energy audit of your home</h3>\
 											<br>\
-											<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%;; padding-right:10%;">\
-												<a href="data/main.html">\
-													<input type="button" class="button button-fill" onclick="captureEmail()" value="Continue...">\
+											<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%; padding-right:10%;">\
+												<a id="lnkContinue" href="">\
+													<input id="btnContinue" style="background-color: #BABABA;" type="button" class="button button-fill" onclick="captureEmail()" value="Continue...">\
 												</a>\
 											</div>');
 							}
@@ -97,31 +115,63 @@
 						<script>
 							if (localStorage.getItem('isSubmit')==1)
 							{
+								document.write('<div id="txtInfo">');
+								document.write('<br>');
+								document.write('<h3 id="submitPhoto" style="padding-left:2%;">Submit to Solareff</h3>');
+								document.write('<br id="spcSubmit">');
 								
-								document.write('<div> &nbsp </div>');
-								document.write('<h3 style="padding-left:2%;">Submit to Solareff</h3>');
-								document.write('<div> &nbsp </div>');
-								if ("roomList" in localStorage) {
-									document.write('<div style="padding-left:4%;> Rooms captured: '+localStorage.roomList.replace(new RegExp(';', 'g'), ', ')+'</div>');
-								} else {
-									document.write('<div style="padding-left:4%;> Rooms captured: NO ROOMS CAPTURED YET</div>');
+								//warn user if key q's not touched
+								if (localStorage.KeyQuestions==0) {
+									document.write('<h3 align="center" style="color:red;padding-left:2%;">You have not made any changes to the key energy questions yet</h3>');
 								}
+								
+								//This is a hack, need to find better way
+								strRooms = String(localStorage.roomList).replace("Bathroom1","Bathroom 1");
+								strRooms = strRooms.replace("Bathroom2","Bathroom 2");
+								strRooms = strRooms.replace("Bathroom3","Bathroom 3");
+								strRooms = strRooms.replace("Bedroom1","Bedroom 1");
+								strRooms = strRooms.replace("Bedroom2","Bedroom 2");
+								strRooms = strRooms.replace("Bedroom3","Bedroom 3");
+								strRooms = strRooms.replace("LivingInside","Living Inside");
+								strRooms = strRooms.replace("LivingOutside","Living Outside");
+								strRooms = strRooms.replace("DiningRoom","Dining Room");
 
 								document.write('<div> &nbsp </div>');
-								document.write('<div style="padding-left:4%;> Total kWh: '+String(localStorage.kWh)+'</div>');
-								document.write('<div> &nbsp </div>');
-
-								document.write('<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%;; padding-right:10%;">\
-                          <input type="button" class="button button-fill" onclick="capturePhoto()" value="Take photo and submit information">\
-                          </div>');
+								if (localStorage["roomList"] && localStorage.roomList!='') {
+									document.write('<div><h3 id="hideRooms" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;"> Rooms captured: '+strRooms.replace(new RegExp(';', 'g'), ', ')+'</h3></div>');
+									document.write('<br id="spcRooms">');
+									document.write('<div><h3 id="hideKwh" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;"> Total kWh: '+String(localStorage.kWh)+'</h3></div>');
+									
+								} else {
+									document.write('<h3 align="center" style="color:red;padding-left:2%;">You have not captured any room information yet</h3>');
+								}
+								
+								document.write('<br id="spcKwh">');
+								document.write('</div>');
+								
+								//disable button if no information captured
+								if (localStorage.KeyQuestions==0 || !localStorage["roomList"] || localStorage.roomList=='') {
+									document.write('<h3 id="textPhoto" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;">Take a photo of the electricity bill before submitting information via email</h3>\
+													  <div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%; padding-right:25%;">\
+													  <input id="btnPhoto" disabled="true" type="button" class="button button-fill" onclick="capturePhoto()" value="Camera & Email">\
+													  </div>');
+								} else
+								{
+									document.write('<h3 id="textPhoto" style="padding-left:2%;padding-right:2%;margin-bottom:1%;text-align: center;">Take a photo of the electricity bill before submitting information via email</h3>\
+													  <div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:25%; padding-right:25%;">\
+													  <input id="btnPhoto" type="button" class="button button-fill" onclick="capturePhoto()" value="Camera & Email">\
+													  </div>');
+								}
+													  
 								//document.write('<input type="button" class="button button-fill" onclick="androidNoPhoto()" value="Submit...">');
 
-								document.write('<br>');
-								document.write('<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:10%;; padding-right:10%;">\
+								document.write('<br id="spcBr">');
+								document.write('<div style="height: 5%; width: 100%; box-sizing: border-box; padding-left:40%; padding-right:40%;">\
                         <a href="data/main.html">\
 													<input type="button" class="button button-fill" onclick="resetIndex()" value="Back">\
 												</a>\
-                        </div>');
+                        </div>\
+                        <br>');
 							}
 						</script>
 				    </div>
@@ -378,6 +428,8 @@
 						// Take picture using device camera and retrieve image as base64-encoded string
 						navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,destinationType: Camera.DestinationType.DATA_URL });
 						//onPhotoDataSuccess(null);
+						//window.location.href = 'thankyou.html';
+
 					}
 					catch(err) {
 						alert(err.message);
@@ -406,7 +458,7 @@
 				//handle email body user details
 				var strEmailBody = 'Name: '+localStorage.userName+' \n';
 				strEmailBody += 'Surname: '+localStorage.userSurname+' \n';
-				strEmailBody += 'Email: '+localStorage.userEmail+' \n';
+				//strEmailBody += 'Email: '+localStorage.userEmail+' \n';
 
 				//Key questions
 				var strKeyQuestions = 'Solar Geyser Size: '+localStorage.sizeSolGeyser+'\r\n';
@@ -419,6 +471,7 @@
 				strKeyQuestions += 'Geyser Blanket: '+localStorage.IsBlanket+'\r\n';
 				strKeyQuestions += 'Stove Type: '+localStorage.StoveType+'\r\n';
 				strKeyQuestions += 'Oven Type: '+localStorage.OvenType+'\r\n';
+				strKeyQuestions += 'Geyser Timer: '+localStorage.IsTimer+'\r\n';
 
 				//Appliances
 				var strRoomUsage = '';
@@ -475,6 +528,23 @@
 							alert(err.message);
 						}
 					  }, 0);
+					  //window.location.assign("data/thankyou.html");
+					  //if we move to a new page the async email doesn't fire. rather just edit the current page to say thankyou
+            document.getElementById("submitPhoto").remove();
+					  document.getElementById("textPhoto").remove();
+            document.getElementById("btnPhoto").remove();
+            document.getElementById("hideRooms").remove();
+            document.getElementById("hideKwh").remove();
+            document.getElementById("spcSubmit").remove();
+            document.getElementById("spcRooms").remove();
+            document.getElementById("spcKwh").remove();
+            document.getElementById("spcBr").remove();
+					  var infoDiv = document.getElementById("txtInfo");
+            var thankyou = document.createElement('h3');
+					  thankyou.innerHTML = "Submitted to Solareff"+"<br/><br/>"+"Thank you for your submission. A consultant will be in touch with you within 24 hours"+"<br/><br/>"+"<span style='font-style: italic;'>"+"&quot;Management of your electricity begins with awareness&quot;"+"</span> ";
+            thankyou.setAttribute('style','padding-left:10%;padding-right:10%;text-align: center;');
+            infoDiv.appendChild(thankyou);
+
 				}
 				else {
 					ClientDetail = strEmailBody;

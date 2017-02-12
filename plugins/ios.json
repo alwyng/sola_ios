@@ -7,15 +7,21 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-camera": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "solareff.app.com"
+        },
         "cordova-plugin-email-composer": {
             "PACKAGE_NAME": "solareff.app.com"
         },
-        "cordova-plugin-ios-camera-permissions": {
-            "PACKAGE_NAME": "solareff.app.com"
-        },
-        "cordova-plugin-camera": {
+        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "solareff.app.com"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "solareff.app.com"
+        }
+    }
 }

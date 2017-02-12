@@ -210,6 +210,12 @@
 							<input type="text" name="txtKwh" disabled>
 						</form>-->
 						<h3 style="padding-left:2%;">Submit to Solareff</h3>
+						<script>
+							if (localStorage.KeyQuestions==0) {
+								alert('no kq');
+								document.write('<h3 style="color:red;padding-left:2%;">You have not made any changes to the key energy questions yet</h3>');
+							}
+						</script>
 						<!--<a href="main.html">
 							<input type="button" name="btnBack" value="Back">
 						</a>-->

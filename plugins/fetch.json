@@ -10,15 +10,34 @@
     "cordova-plugin-camera": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-camera@~2.1.1"
+            "id": "cordova-plugin-camera"
         },
         "is_top_level": true,
-        "variables": {}
+        "variables": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": " "
+        }
     },
     "cordova-plugin-ios-camera-permissions": {
         "source": {
             "type": "registry",
             "id": "cordova-plugin-ios-camera-permissions@~1.0.4"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-compat": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-compat"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-statusbar": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-statusbar@2.1.2"
         },
         "is_top_level": true,
         "variables": {}
