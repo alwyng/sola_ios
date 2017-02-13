@@ -459,17 +459,40 @@
 				//strEmailBody += 'Email: '+localStorage.userEmail+' \n';
 
 				//Key questions
-				var strKeyQuestions = 'Solar Geyser Size: '+localStorage.sizeSolGeyser+'\r\n';
-				strKeyQuestions += 'Solar Geyser Quantity: '+localStorage.QtySolGeyser+'\r\n';
-				strKeyQuestions += 'Electric Geyser Size: '+localStorage.SizeElecGeyser+'\r\n';
-				strKeyQuestions += 'Electric Geyser Quantity: '+localStorage.QtyElecGeyser+'\r\n';
-				strKeyQuestions += 'Gas Geyer Size: '+localStorage.SizeGasGeyser+'\r\n';
-				strKeyQuestions += 'Gas Geyer Quantity: '+localStorage.QtyGasGeyser+'\r\n';
-				strKeyQuestions += 'Heat Pump: '+localStorage.IsHeatPump+'\r\n';
-				strKeyQuestions += 'Geyser Blanket: '+localStorage.IsBlanket+'\r\n';
-				strKeyQuestions += 'Stove Type: '+localStorage.StoveType+'\r\n';
-				strKeyQuestions += 'Oven Type: '+localStorage.OvenType+'\r\n';
-				strKeyQuestions += 'Geyser Timer: '+localStorage.IsTimer+'\r\n';
+				var strKeyQuestions = '';
+				if (localStorage.sizeSolGeyser!='') {
+					strKeyQuestions += 'Solar Geyser Size: '+localStorage.sizeSolGeyser+'\r\n';
+				}
+				if (localStorage.QtySolGeyser!='') {
+					strKeyQuestions += 'Solar Geyser Quantity: '+localStorage.QtySolGeyser+'\r\n';
+				}
+				if (localStorage.SizeElecGeyser!='') {
+					strKeyQuestions += 'Electric Geyser Size: '+localStorage.SizeElecGeyser+'\r\n';
+				}
+				if (localStorage.QtyElecGeyser!='') {
+					strKeyQuestions += 'Electric Geyser Quantity: '+localStorage.QtyElecGeyser+'\r\n';
+				}
+				if (localStorage.SizeGasGeyser!='') {
+					strKeyQuestions += 'Gas Geyer Size: '+localStorage.SizeGasGeyser+'\r\n';
+				}
+				if (localStorage.QtyGasGeyser!='') {
+					strKeyQuestions += 'Gas Geyer Quantity: '+localStorage.QtyGasGeyser+'\r\n';
+				}
+				if (localStorage.IsHeatPump!='') {
+					strKeyQuestions += 'Heat Pump: '+localStorage.IsHeatPump+'\r\n';
+				}
+				if (localStorage.IsBlanket!='') {
+					strKeyQuestions += 'Geyser Blanket: '+localStorage.IsBlanket+'\r\n';
+				}
+				if (localStorage.StoveType!='') {
+					strKeyQuestions += 'Stove Type: '+localStorage.StoveType+'\r\n';
+				}
+				if (localStorage.OvenType!='') {
+					strKeyQuestions += 'Oven Type: '+localStorage.OvenType+'\r\n';
+				}
+				if (localStorage.IsTimer!='') {
+					strKeyQuestions += 'Geyser Timer: '+localStorage.IsTimer+'\r\n';
+				}
 
 				//Appliances
 				var strRoomUsage = '';
@@ -485,7 +508,7 @@
 						for (var j=0;j<arrRoomDetail.length;j++) {
 							if (arrRoomDetail[j]!="") {
 								var appDetail = arrRoomDetail[j].split(',');
-								if (appDetail[1]!='' && appDetail[2]!='') {
+								if (appDetail[1]!='Hour per Day' && appDetail[2]!='Quantity') {
 									strRoomUsage += ''+appDetail[0].replace(/(\r\n|\n|\r)/gm,"")+' \t '+appDetail[1]+' \t '+appDetail[2]+'\r\n';
 								}
 							}
